@@ -9,20 +9,20 @@ import { __ } from '@wordpress/i18n';
  * @param {Object} result The search result object.
  * @return {string} Normalised type key.
  */
-export function getResultType(result) {
+export function getResultType( result ) {
 	// PDF files are always 'document'
-	if (result.url) {
-		const ext = result.url.split('.').pop()?.toLowerCase();
-		if (ext === 'pdf') {
+	if ( result.url ) {
+		const ext = result.url.split( '.' ).pop()?.toLowerCase();
+		if ( ext === 'pdf' ) {
 			return 'document';
 		}
 	}
 
 	// Check raffle:type from metadata
-	if (Array.isArray(result.metadata)) {
-		for (const meta of result.metadata) {
-			if (meta.selector === 'type' && Array.isArray(meta.matches)) {
-				for (const match of meta.matches) {
+	if ( Array.isArray( result.metadata ) ) {
+		for ( const meta of result.metadata ) {
+			if ( meta.selector === 'type' && Array.isArray( meta.matches ) ) {
+				for ( const match of meta.matches ) {
 					if (
 						match.tag === 'meta' &&
 						match.attr &&
@@ -45,7 +45,7 @@ export function getResultType(result) {
 		result.resultType ||
 		''
 	).toLowerCase();
-	if (direct) {
+	if ( direct ) {
 		return direct === 'post' ? 'news' : direct;
 	}
 
@@ -58,16 +58,16 @@ export function getResultType(result) {
  * @param {string} type Type key (e.g. 'post', 'page', 'document', 'news', or a CPT slug).
  * @return {string} Translated or capitalised display label.
  */
-export function getResultTypeLabel(type) {
-	switch (type) {
+export function getResultTypeLabel( type ) {
+	switch ( type ) {
 		case 'page':
-			return __('Page', 'raffle-search');
+			return __( 'Page', 'raffle-search' );
 		case 'document':
-			return __('Document', 'raffle-search');
+			return __( 'Document', 'raffle-search' );
 		case 'news':
-			return __('News', 'raffle-search');
+			return __( 'News', 'raffle-search' );
 		default:
 			// For custom post types: capitalise the first letter.
-			return type.charAt(0).toUpperCase() + type.slice(1);
+			return type.charAt( 0 ).toUpperCase() + type.slice( 1 );
 	}
 }
