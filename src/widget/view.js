@@ -9,6 +9,7 @@
 import { createRoot } from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import RaffleSearch from '../components/RaffleSearch';
+import { pushRaffleEvent } from '../utils/analytics';
 import './style.css';
 
 const queryClient = new QueryClient( {
@@ -88,6 +89,8 @@ function init() {
 
 				overlayRoot = createRoot( overlayContainer );
 
+				pushRaffleEvent( 'search_open' );
+
 				const closeOverlay = () => {
 					if ( overlayRoot ) {
 						overlayRoot.unmount();
@@ -98,6 +101,8 @@ function init() {
 						overlayContainer = null;
 					}
 					document.body.style.overflow = '';
+
+					pushRaffleEvent( 'search_close' );
 				};
 
 				overlayRoot.render(

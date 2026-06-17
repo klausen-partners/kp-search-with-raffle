@@ -142,7 +142,13 @@ export default function RaffleResultCard({
 						target='_blank'
 						rel='noopener noreferrer'
 						className='raffle-result-link'
-						onClick={() => onResultClick?.(result.feedback_data)}
+						onClick={() =>
+							onResultClick?.({
+								feedbackData: result.feedback_data,
+								url: result.url,
+								title: result.title,
+							})
+						}
 					>
 						{result.title}
 					</a>

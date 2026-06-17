@@ -11,6 +11,7 @@ import {
 	sendFeedback,
 } from '../api/api';
 import { useDebounce } from '../hooks/useDebounce';
+import { pushRaffleEvent } from '../utils/analytics';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import Spinner from './Spinner';
 import { IconSearch, IconSubmit, IconSparkle } from './icons';
@@ -242,12 +243,6 @@ export default function RaffleSearch({ searchUid }) {
 	useEffect(() => {
 		if (isUserTyping && debouncedSearch.trim().length >= 3) {
 			handleSearch(debouncedSearch);
-			if (window.dataLayer) {
-				window.dataLayer.push({
-					event: 'raffle_auto_search',
-					search_query: debouncedSearch,
-				});
-			}
 		}
 	}, [debouncedSearch]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -292,7 +287,11 @@ export default function RaffleSearch({ searchUid }) {
 		handleSearch(question);
 	};
 
-	const handleResultClick = (feedbackData) => {
+	const handleResultClick = ({ feedbackData, url, title } = {}) => {
+		pushRaffleEvent('answer_click', {
+			raffle_result_url: url,
+			raffle_result_title: title,
+		});
 		if (feedbackData) {
 			submitFeedback(feedbackData);
 		}
@@ -408,6 +407,17 @@ export default function RaffleSearch({ searchUid }) {
 																href={ref.url}
 																target='_blank'
 																rel='noopener noreferrer'
+																onClick={() =>
+																	pushRaffleEvent(
+																		'open_original_answer',
+																		{
+																			raffle_result_url:
+																				ref.url,
+																			raffle_result_title:
+																				ref.title,
+																		},
+																	)
+																}
 															>
 																{ref.title}
 															</a>

@@ -3,7 +3,7 @@
  * Plugin Name:       Raffle Search
  * Plugin URI:        https://raffle.ai
  * Description:       A Gutenberg block that integrates Raffle AI search (top questions, autocomplete, summary, and search results).
- * Version:           1.0.0
+ * Version:           1.0.3
  * Requires at least: 6.1
  * Requires PHP:      7.4
  * Author:            Klausen and Partners
