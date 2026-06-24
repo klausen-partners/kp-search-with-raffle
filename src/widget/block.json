@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "raffle-search/widget",
-	"version": "1.0.0",
+	"version": "1.0.4",
 	"title": "Raffle Search Widget",
 	"category": "widgets",
 	"icon": "search",

@@ -4,7 +4,7 @@
  * Plugin Name:       Raffle Search
  * Plugin URI:        https://raffle.ai
  * Description:       A Gutenberg block that integrates Raffle AI search (top questions, autocomplete, summary, and search results).
- * Version:           1.0.3
+ * Version:           1.0.4
  * Requires at least: 6.1
  * Requires PHP:      7.4
  * Author:            Klausen and Partners
@@ -18,7 +18,7 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-define('RAFFLE_SEARCH_VERSION', '1.0.0');
+define('RAFFLE_SEARCH_VERSION', '1.0.4');
 define('RAFFLE_SEARCH_DIR', WP_PLUGIN_DIR . '/' . dirname(plugin_basename(__FILE__)) . '/');
 define('RAFFLE_SEARCH_URL', plugins_url('/', __FILE__));
 
@@ -86,6 +86,7 @@ function raffle_search_localize_view_script()
             'hideSummaryButton' => (bool) get_option('raffle_search_hide_summary_button', false),
             'hideExcerptTypes' => get_option('raffle_search_hide_excerpt_types', ''),
             'excerptTrimLength' => get_option('raffle_search_excerpt_trim_length', null),
+            'instantAnswerExcerptTrimLength' => get_option('raffle_search_instant_answer_excerpt_trim_length', null),
             'imageWidth'       => (int) get_option('raffle_search_image_width', 250),
             'hiddenTags'       => get_option('raffle_search_hidden_tags', ''),
             'tagsMode'         => get_option('raffle_search_tags_mode', 'exclude'),
@@ -108,6 +109,7 @@ function raffle_search_localize_view_script()
             'hideSummaryButton' => (bool) get_option('raffle_search_hide_summary_button', false),
             'hideExcerptTypes' => get_option('raffle_search_hide_excerpt_types', ''),
             'excerptTrimLength' => get_option('raffle_search_excerpt_trim_length', null),
+            'instantAnswerExcerptTrimLength' => get_option('raffle_search_instant_answer_excerpt_trim_length', null),
             'imageWidth'       => (int) get_option('raffle_search_image_width', 250),
             'hiddenTags'       => get_option('raffle_search_hidden_tags', ''),
             'tagsMode'         => get_option('raffle_search_tags_mode', 'exclude'),
@@ -216,6 +218,7 @@ function raffle_search_get_settings_array()
         'hideSummaryButton' => (bool) get_option('raffle_search_hide_summary_button', false),
         'hideExcerptTypes'  => get_option('raffle_search_hide_excerpt_types', ''),
         'excerptTrimLength' => get_option('raffle_search_excerpt_trim_length', null),
+        'instantAnswerExcerptTrimLength' => get_option('raffle_search_instant_answer_excerpt_trim_length', null),
         'imageWidth'        => (int) get_option('raffle_search_image_width', 250),
         'hiddenTags'        => get_option('raffle_search_hidden_tags', ''),
         'tagsMode'          => get_option('raffle_search_tags_mode', 'exclude'),
@@ -310,4 +313,3 @@ function raffle_search_widget_shortcode($atts)
         . '</div>';
 }
 add_shortcode('raffle_search_widget', 'raffle_search_widget_shortcode');
-

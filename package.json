@@ -1,6 +1,6 @@
 {
 	"name": "raffle-search",
-	"version": "1.0.0",
+	"version": "1.0.4",
 	"description": "Raffle AI Search Gutenberg Block",
 	"homepage": "https://kogp.dk",
 	"author": "Klausen and Partners",
@@ -14,7 +14,13 @@
 		"format": "wp-scripts format",
 		"lint:js": "wp-scripts lint-js",
 		"lint:js-fix": "wp-scripts lint-js --fix",
-		"zip": "wp-scripts plugin-zip"
+		"zip": "wp-scripts plugin-zip",
+		"i18n:pot": "wp i18n make-pot . languages/raffle-search.pot --domain=raffle-search --exclude=node_modules,vendor,build",
+		"i18n:merge:en": "msgmerge --update --backup=off languages/raffle-search.po languages/raffle-search.pot",
+		"i18n:merge:da": "msgmerge --update --backup=off languages/raffle-search-da_DK.po languages/raffle-search.pot",
+		"i18n:mo": "msgfmt languages/raffle-search.po -o languages/raffle-search.mo && msgfmt languages/raffle-search-da_DK.po -o languages/raffle-search-da_DK.mo",
+		"i18n:json": "wp i18n make-json languages --no-purge",
+		"i18n:update": "npm run i18n:pot && npm run i18n:merge:en && npm run i18n:merge:da && npm run i18n:mo && npm run i18n:json"
 	},
 	"dependencies": {
 		"react": "18.3.1",

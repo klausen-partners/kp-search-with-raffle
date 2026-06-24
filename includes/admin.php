@@ -92,6 +92,16 @@ function raffle_search_register_settings() {
 		)
 	);
 
+    register_setting(
+        'raffle_search_options',
+        'raffle_search_instant_answer_excerpt_trim_length',
+        array(
+            'type'              => 'integer',
+            'sanitize_callback' => 'raffle_search_sanitize_trim_length',
+            'default'           => null,
+        )
+    );
+
 	register_setting(
 		'raffle_search_options',
 		'raffle_search_uid',
@@ -308,7 +318,7 @@ function raffle_search_register_settings() {
 
 	add_settings_field(
 		'raffle_search_show_references',
-		__( 'Show References', 'raffle-search' ),
+		__( 'Show references', 'raffle-search' ),
 		'raffle_search_field_show_references',
 		'raffle-search-vis-settings',
 		'raffle_search_settings_section'
@@ -324,15 +334,23 @@ function raffle_search_register_settings() {
 
 	add_settings_field(
 		'raffle_search_excerpt_trim_length',
-		__( 'Excerpt trim Length', 'raffle-search' ),
+		__( 'Excerpt trim length', 'raffle-search' ),
 		'raffle_search_field_excerpt_trim_length',
 		'raffle-search-vis-settings',
 		'raffle_search_settings_section'
 	);
 
+    add_settings_field(
+        'raffle_search_instant_answer_excerpt_trim_length',
+        __( 'Instant Answers excerpt trim length', 'raffle-search' ),
+        'raffle_search_field_instant_answer_excerpt_trim_length',
+        'raffle-search-vis-settings',
+        'raffle_search_settings_section'
+    );
+
 	add_settings_field(
 		'raffle_search_hide_excerpt_types',
-		__( 'Hide excerpts for Types', 'raffle-search' ),
+		__( 'Hide excerpts for types', 'raffle-search' ),
 		'raffle_search_field_hide_excerpt_types',
 		'raffle-search-vis-settings',
 		'raffle_search_settings_section'
@@ -364,7 +382,7 @@ function raffle_search_register_settings() {
 
 	add_settings_field(
 		'raffle_search_default_image_url',
-		__( 'Default Result Image', 'raffle-search' ),
+		__( 'Default result image', 'raffle-search' ),
 		'raffle_search_field_default_image_url',
 		'raffle-search-design',
 		'raffle_search_design_images_section'
@@ -372,7 +390,7 @@ function raffle_search_register_settings() {
 
 	add_settings_field(
 		'raffle_search_image_width',
-		__( 'Result Image Width', 'raffle-search' ),
+		__( 'Result image width', 'raffle-search' ),
 		'raffle_search_field_image_width',
 		'raffle-search-design',
 		'raffle_search_design_images_section'
@@ -380,7 +398,7 @@ function raffle_search_register_settings() {
 
 	add_settings_section(
 		'raffle_search_badge_colors_section',
-		__( 'Badge Colors', 'raffle-search' ),
+		__( 'Badge colors', 'raffle-search' ),
 		'raffle_search_badge_colors_section_description',
 		'raffle-search-design'
 	);
@@ -404,14 +422,14 @@ function raffle_search_register_settings() {
 	// ── Design tab: Widget Icon section ─────────────────────────
 	add_settings_section(
 		'raffle_search_widget_icon_section',
-		__( 'Widget Icon', 'raffle-search' ),
+		__( 'Widget icon', 'raffle-search' ),
 		'raffle_search_widget_icon_section_description',
 		'raffle-search-design'
 	);
 
 	add_settings_field(
 		'raffle_search_widget_icon_color',
-		__( 'Icon Color', 'raffle-search' ),
+		__( 'Icon color', 'raffle-search' ),
 		'raffle_search_field_widget_icon_color',
 		'raffle-search-design',
 		'raffle_search_widget_icon_section'
@@ -876,7 +894,19 @@ function raffle_search_field_excerpt_trim_length() {
 <input type="number" id="raffle_search_excerpt_trim_length" name="raffle_search_excerpt_trim_length"
     value="<?php echo esc_attr( $value ); ?>" class="small-text" min="1" placeholder="None" />
 <p class="description">
-    <?php esc_html_e( 'Maximum number of characters to show in each result excerpt/snippet. Leave blank for no trimming.', 'raffle-search' ); ?>
+    <?php esc_html_e( 'Maximum number of characters to show in each result excerpt/snippet, except for instant answers. Leave blank for no trimming.', 'raffle-search' ); ?>
+</p>
+<?php
+}
+
+function raffle_search_field_instant_answer_excerpt_trim_length() {
+	$value = get_option( 'raffle_search_instant_answer_excerpt_trim_length', null );
+	?>
+<input type="number" id="raffle_search_instant_answer_excerpt_trim_length"
+    name="raffle_search_instant_answer_excerpt_trim_length" value="<?php echo esc_attr( $value ); ?>" class="small-text"
+    min="1" placeholder="None" />
+<p class="description">
+    <?php esc_html_e( 'Maximum number of characters to show in instant answer excerpts/snippets (type: instant_answer). Leave blank for no trimming.', 'raffle-search' ); ?>
 </p>
 <?php
 }
@@ -1054,6 +1084,12 @@ function raffle_search_render_settings_page() {
         <div id="tab-about" class="raffle-tab-panel" style="display:none;">
             <h2><?php esc_html_e( 'About this plugin', 'raffle-search' ); ?></h2>
             <table class="form-table" role="presentation">
+                <tr>
+                    <th scope="row"><?php esc_html_e( 'Version', 'raffle-search' ); ?></th>
+                    <td>
+                        <p><?php echo esc_html( RAFFLE_SEARCH_VERSION ); ?></p>
+                    </td>
+                </tr>
                 <tr>
                     <th scope="row"><?php esc_html_e( 'Author', 'raffle-search' ); ?></th>
                     <td>

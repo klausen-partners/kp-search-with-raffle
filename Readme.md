@@ -74,14 +74,15 @@ Controls which `<meta>` tags the plugin outputs in the `<head>` of posts and pag
 
 Controls search result display and filtering.
 
-| Setting                     | Default   | Description                                                                                                |
-| --------------------------- | --------- | ---------------------------------------------------------------------------------------------------------- |
-| **Show References**         | On        | Show reference links below AI summaries                                                                    |
-| **Hide summary button**     | Off       | Remove the "AI Summary" button from the search UI                                                          |
-| **Excerpt trim length**     | _(none)_  | Maximum character length for result excerpts (leave empty for full length)                                 |
-| **Hide excerpts for types** | `pdf`     | Comma-separated list of type slugs whose excerpts should be hidden                                         |
-| **Hide Tags**               | _(empty)_ | Exclude or include specific tags from the tag filter bar and result badges (comma-separated list + mode)   |
-| **Filter Types**            | _(empty)_ | Exclude or include specific types from the type filter bar and result badges (comma-separated list + mode) |
+| Setting                                 | Default   | Description                                                                                                |
+| --------------------------------------- | --------- | ---------------------------------------------------------------------------------------------------------- |
+| **Show References**                     | On        | Show reference links below AI summaries                                                                    |
+| **Hide summary button**                 | Off       | Remove the "AI Summary" button from the search UI                                                          |
+| **Excerpt trim length**                 | _(none)_  | Maximum character length for result excerpts except `instant_answer` (leave empty for full length)         |
+| **Instant Answers excerpt trim length** | _(none)_  | Maximum character length for excerpts where result type is `instant_answer` (leave empty for full length)  |
+| **Hide excerpts for types**             | `pdf`     | Comma-separated list of type slugs whose excerpts should be hidden                                         |
+| **Hide tags**                           | _(empty)_ | Exclude or include specific tags from the tag filter bar and result badges (comma-separated list + mode)   |
+| **Filter types**                        | _(empty)_ | Exclude or include specific types from the type filter bar and result badges (comma-separated list + mode) |
 
 ### Design
 
@@ -89,11 +90,11 @@ Customise the visual appearance of search results and the widget.
 
 | Setting                  | Default   | Description                                                            |
 | ------------------------ | --------- | ---------------------------------------------------------------------- |
-| **Default Result Image** | _(empty)_ | Fallback image URL when a result has no thumbnail                      |
-| **Result Image Width**   | `250`     | Width in pixels for result thumbnails                                  |
+| **Default result image** | _(empty)_ | Fallback image URL when a result has no thumbnail                      |
+| **Result image width**   | `250`     | Width in pixels for result thumbnails                                  |
 | **Type badge colors**    | _(theme)_ | Background and text colour for the type badge                          |
 | **Tag badge colors**     | _(theme)_ | Background and text colour for the tag badge                           |
-| **Widget Icon Color**    | `#333`    | Icon colour for the search widget (desktop and mobile, set separately) |
+| **Widget icon color**    | `#333`    | Icon colour for the search widget (desktop and mobile, set separately) |
 
 ## Development
 
@@ -105,12 +106,13 @@ npm install
 
 ### Available scripts
 
-| Command           | Description                                            |
-| ----------------- | ------------------------------------------------------ |
-| `npm run build`   | Compile and bundle assets for production into `build/` |
-| `npm start`       | Start the development watcher with hot reloading       |
-| `npm run format`  | Auto-format source files                               |
-| `npm run lint:js` | Lint JavaScript source files                           |
+| Command               | Description                                                                  |
+| --------------------- | ---------------------------------------------------------------------------- |
+| `npm run build`       | Compile and bundle assets for production into `build/`                       |
+| `npm start`           | Start the development watcher with hot reloading                             |
+| `npm run format`      | Auto-format source files                                                     |
+| `npm run lint:js`     | Lint JavaScript source files                                                 |
+| `npm run i18n:update` | Regenerate POT, merge PO files, compile MO, and rebuild JS JSON translations |
 
 ### Project structure
 
@@ -173,13 +175,30 @@ Each language requires three files: a `.po` (human-editable), a compiled `.mo`, 
 
 ### Editing an existing translation
 
+Fast path (recommended):
+
+```bash
+npm run i18n:update
+```
+
+Step-by-step:
+
 1. Open the relevant `.po` file (e.g. `languages/raffle-search-da_DK.po`) in [Poedit](https://poedit.net) or any text editor.
 2. Update the `msgstr` values for any strings you want to change.
-3. Compile the `.mo` file — in Poedit this happens on save. From the command line:
+3. Regenerate and merge catalogs:
     ```bash
-    msgfmt languages/raffle-search-da_DK.po -o languages/raffle-search-da_DK.mo
+    npm run i18n:pot
+    npm run i18n:merge:en
+    npm run i18n:merge:da
     ```
-4. Regenerate the `.json` file for the JS bundle (see [JSON format](#json-format) below).
+4. Compile the `.mo` file — in Poedit this happens on save. From the command line:
+    ```bash
+    npm run i18n:mo
+    ```
+5. Regenerate the `.json` file for the JS bundle (see [JSON format](#json-format) below):
+    ```bash
+    npm run i18n:json
+    ```
 
 ### Adding a new language
 
