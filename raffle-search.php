@@ -125,6 +125,9 @@ add_action('enqueue_block_assets', 'raffle_search_localize_view_script');
 add_action('wp_enqueue_scripts', function () {
     if (! is_admin()) {
         $default_image_url = function_exists('raffle_search_get_default_image_url') ? raffle_search_get_default_image_url() : '';
+        if (empty($default_image_url)) {
+            $default_image_url = plugins_url('includes/assets/logo.svg', __FILE__);
+        }
         // Enqueue the view script if not already enqueued
         $handle = 'raffle-search-view';
         if (! wp_script_is($handle, 'enqueued')) {
