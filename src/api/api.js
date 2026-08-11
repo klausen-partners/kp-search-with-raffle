@@ -5,7 +5,7 @@ import { buildUrl, getUid } from './routes';
  * The value is random per page view, which groups searches within the same visit.
  */
 const sessionId =
-	Math.random().toString(36).substring(2) + Date.now().toString(36);
+	Math.random().toString( 36 ).substring( 2 ) + Date.now().toString( 36 );
 
 // ---------------------------------------------------------------------------
 // Top Questions
@@ -16,11 +16,11 @@ const sessionId =
  * @param {string} uid - The user or session identifier.
  * @return {Promise<Array<{ question: string }>>} Resolves to an array of question objects.
  */
-export async function fetchTopQuestions(uid) {
-	const url = buildUrl('/top_questions', { uid: getUid(uid) });
-	const res = await fetch(url);
-	if (!res.ok) {
-		throw new Error(`Top questions request failed: ${res.status}`);
+export async function fetchTopQuestions( uid ) {
+	const url = buildUrl( '/top_questions', { uid: getUid( uid ) } );
+	const res = await fetch( url );
+	if ( ! res.ok ) {
+		throw new Error( `Top questions request failed: ${ res.status }` );
 	}
 	const data = await res.json();
 	return data.questions ?? [];
@@ -37,15 +37,15 @@ export async function fetchTopQuestions(uid) {
  * @param {number} [limit=5] - Maximum number of suggestions to return.
  * @return {Promise<Array<{ suggestion: string }>>} Resolves to an array of suggestion objects.
  */
-export async function fetchSuggestions(query, uid, limit = 5) {
-	const url = buildUrl('/autocomplete', {
-		uid: getUid(uid),
+export async function fetchSuggestions( query, uid, limit = 5 ) {
+	const url = buildUrl( '/autocomplete', {
+		uid: getUid( uid ),
 		query,
-		limit: String(limit),
-	});
-	const res = await fetch(url);
-	if (!res.ok) {
-		throw new Error(`Autocomplete request failed: ${res.status}`);
+		limit: String( limit ),
+	} );
+	const res = await fetch( url );
+	if ( ! res.ok ) {
+		throw new Error( `Autocomplete request failed: ${ res.status }` );
 	}
 	const data = await res.json();
 	return data.suggestions ?? [];
@@ -62,15 +62,15 @@ export async function fetchSuggestions(query, uid, limit = 5) {
  * @param {string} uid   - The user or session identifier.
  * @return {Promise<{ status: string, summary: string, references: Array }>} Resolves to an object containing the summary and references.
  */
-export async function fetchSummary(query, uid) {
-	const url = buildUrl('/summary', {
-		uid: getUid(uid),
+export async function fetchSummary( query, uid ) {
+	const url = buildUrl( '/summary', {
+		uid: getUid( uid ),
 		query,
 		reference_format: 'html',
-	});
-	const res = await fetch(url);
-	if (!res.ok) {
-		throw new Error(`Summary request failed: ${res.status}`);
+	} );
+	const res = await fetch( url );
+	if ( ! res.ok ) {
+		throw new Error( `Summary request failed: ${ res.status }` );
 	}
 	return res.json();
 }
@@ -86,20 +86,20 @@ export async function fetchSummary(query, uid) {
  * @param {string} uid   - The user or session identifier.
  * @return {Promise<Array>} Resolves to an array of search result objects.
  */
-export async function fetchSearchResults(query, uid) {
-	const url = buildUrl('/search', {
-		'uid': getUid(uid),
+export async function fetchSearchResults( query, uid ) {
+	const url = buildUrl( '/search', {
+		uid: getUid( uid ),
 		query,
 		'session-id': sessionId,
-		'device': 'desktop',
+		device: 'desktop',
 		// Set preview=true during development to avoid polluting insights.
 		// Remove or set to 'false' in production.
-		'preview': 'false',
+		preview: 'false',
 		'origin-url': window.location.href,
-	});
-	const res = await fetch(url);
-	if (!res.ok) {
-		throw new Error(`Search request failed: ${res.status}`);
+	} );
+	const res = await fetch( url );
+	if ( ! res.ok ) {
+		throw new Error( `Search request failed: ${ res.status }` );
 	}
 	const data = await res.json();
 	return data.results ?? [];
@@ -116,11 +116,11 @@ export async function fetchSearchResults(query, uid) {
  * @param {string} feedbackData - The opaque `feedback_data` string from a search result.
  * @return {Promise<void>}
  */
-export async function sendFeedback(feedbackData) {
-	const url = buildUrl('/feedback');
-	await fetch(url, {
+export async function sendFeedback( feedbackData ) {
+	const url = buildUrl( '/feedback' );
+	await fetch( url, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({ type: 'click', feedback_data: feedbackData }),
-	});
+		body: JSON.stringify( { type: 'click', feedback_data: feedbackData } ),
+	} );
 }

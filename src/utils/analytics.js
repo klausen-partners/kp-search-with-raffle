@@ -19,7 +19,7 @@
  * @see https://docs.raffle.ai/installation/tag-manager/
  *
  * @param {string} name   Event name WITHOUT the `raffle_` prefix
- *                         (e.g. 'search_open', 'answer_click').
+ *                        (e.g. 'search_open', 'answer_click').
  * @param {Object} [data] Optional extra dataLayer properties (e.g. result URL).
  */
 export function pushRaffleEvent( name, data = {} ) {

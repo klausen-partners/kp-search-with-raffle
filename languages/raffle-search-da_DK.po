@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Raffle Search 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/raffle-search\n"
-"POT-Creation-Date: 2026-06-24T08:46:06+00:00\n"
+"POT-Creation-Date: 2026-08-11T08:29:08+00:00\n"
 "PO-Revision-Date: 2026-03-03T00:00:00+00:00\n"
 "Last-Translator: Klausen and Partners <info@kogp.dk>\n"
 "Language-Team: Danish <da@li.org>\n"
@@ -472,36 +472,36 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: src/components/RaffleSearch.jsx:319
+#: src/components/RaffleSearch.jsx:320
 msgid "Search…"
 msgstr "Søg…"
 
-#: src/components/RaffleSearch.jsx:320 src/widget/edit.js:84
+#: src/components/RaffleSearch.jsx:321 src/widget/edit.js:84
 #, fuzzy
 msgid "Search"
 msgstr "Søg"
 
-#: src/components/RaffleSearch.jsx:327
+#: src/components/RaffleSearch.jsx:328
 msgid "Submit search"
 msgstr "Foretag søgning"
 
-#: src/components/RaffleSearch.jsx:336
+#: src/components/RaffleSearch.jsx:337
 msgid "Suggestions"
 msgstr "Forslag"
 
-#: src/components/RaffleSearch.jsx:337
+#: src/components/RaffleSearch.jsx:338
 msgid "Popular Questions"
 msgstr "Populære spørgsmål"
 
-#: src/components/RaffleSearch.jsx:384
+#: src/components/RaffleSearch.jsx:387
 msgid "AI Summary"
 msgstr "AI-resumé"
 
-#: src/components/RaffleSearch.jsx:435
+#: src/components/RaffleSearch.jsx:439
 msgid "No summary available for this query."
 msgstr "Intet resumé tilgængeligt for denne søgning."
 
-#: src/components/RaffleSearch.jsx:449
+#: src/components/RaffleSearch.jsx:453
 msgid "No results found for this query."
 msgstr "Ingen resultater fundet for denne søgning."
 
