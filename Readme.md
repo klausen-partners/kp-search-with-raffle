@@ -5,7 +5,7 @@ A WordPress Gutenberg block that integrates [Raffle](https://raffle.ai) search i
 ## Requirements
 
 -   WordPress 6.1+
--   PHP 7.4+
+-   PHP 8.5+
 -   Node.js (for development)
 
 ## Installation

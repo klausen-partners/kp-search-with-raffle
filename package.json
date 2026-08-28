@@ -1,6 +1,6 @@
 {
 	"name": "raffle-search",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "Raffle AI Search Gutenberg Block",
 	"homepage": "https://kogp.dk",
 	"author": "Klausen and Partners",
@@ -25,14 +25,14 @@
 	"dependencies": {
 		"react": "19.2.8",
 		"react-dom": "19.2.8",
-		"@tanstack/react-query": "^5.101.4",
+		"@tanstack/react-query": "^5.102.8",
 		"@uidotdev/usehooks": "^2.4.1"
 	},
 	"devDependencies": {
-		"@wordpress/blocks": "^15.25.0",
-		"@wordpress/i18n": "^6.25.0",
-		"@wordpress/block-editor": "^16.1.0",
-		"@wordpress/components": "^38.0.0",
-		"@wordpress/scripts": "^34.0.0"
+		"@wordpress/blocks": "^15.27.0",
+		"@wordpress/i18n": "^6.27.0",
+		"@wordpress/block-editor": "^17.0.0",
+		"@wordpress/components": "^40.0.0",
+		"@wordpress/scripts": "^34.2.0"
 	}
 }

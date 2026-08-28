@@ -569,10 +569,12 @@ function raffle_search_field_image_width() {
 
 function raffle_search_field_default_image_url() {
 	$value = get_option( 'raffle_search_default_image_url', '' );
-	$img_preview = $value ? '<img src="' . esc_url( $value ) . '" style="max-width:100px;max-height:100px;display:block;margin-bottom:8px;" />' : '';
 	?>
 <div id="raffle-search-default-image-upload">
-    <?php echo $img_preview; ?>
+    <?php if ( $value ) : ?>
+    <img src="<?php echo esc_url( $value ); ?>"
+        style="max-width:100px;max-height:100px;display:block;margin-bottom:8px;" alt="" />
+    <?php endif; ?>
     <input type="url" id="raffle_search_default_image_url" name="raffle_search_default_image_url"
         value="<?php echo esc_attr( $value ); ?>" class="regular-text" placeholder="https://..." />
     <button type="button" class="button"
@@ -754,47 +756,48 @@ function raffle_search_enqueue_color_picker( $hook ) {
 add_action( 'admin_enqueue_scripts', 'raffle_search_enqueue_color_picker' );
 
 function raffle_search_output_badge_color_styles() {
-	$type_bg   = get_option( 'raffle_search_color_type_bg', '' );
-	$type_text = get_option( 'raffle_search_color_type_text', '' );
-	$tag_bg    = get_option( 'raffle_search_color_tag_bg', '' );
-	$tag_text  = get_option( 'raffle_search_color_tag_text', '' );
+	// sanitize_hex_color() returns null for anything that is not a valid hex
+	// colour, so the values interpolated below can never break out of the rule.
+	$type_bg   = sanitize_hex_color( get_option( 'raffle_search_color_type_bg', '' ) );
+	$type_text = sanitize_hex_color( get_option( 'raffle_search_color_type_text', '' ) );
+	$tag_bg    = sanitize_hex_color( get_option( 'raffle_search_color_tag_bg', '' ) );
+	$tag_text  = sanitize_hex_color( get_option( 'raffle_search_color_tag_text', '' ) );
 
 	$css = '';
 
 	if ( $type_bg || $type_text ) {
 		$rule = '';
-		if ( $type_bg )   $rule .= 'background:' . esc_attr( $type_bg ) . '!important;';
-		if ( $type_text ) $rule .= 'color:' . esc_attr( $type_text ) . '!important;';
+		if ( $type_bg )   $rule .= 'background:' . $type_bg . '!important;';
+		if ( $type_text ) $rule .= 'color:' . $type_text . '!important;';
 		$css .= '.raffle-meta-tag--type,.raffle-filter-type,.raffle-filter-type.is-active{' . $rule . '}';
-		if ( $type_bg )   $css .= '.raffle-filter-type-count{background:' . esc_attr( $type_bg ) . '!important;}';
-		if ( $type_text ) $css .= '.raffle-filter-type-count{color:' . esc_attr( $type_text ) . '!important;}';
+		if ( $type_bg )   $css .= '.raffle-filter-type-count{background:' . $type_bg . '!important;}';
+		if ( $type_text ) $css .= '.raffle-filter-type-count{color:' . $type_text . '!important;}';
 	}
 
 	if ( $tag_bg || $tag_text ) {
 		$rule = '';
-		if ( $tag_bg )   $rule .= 'background:' . esc_attr( $tag_bg ) . '!important;';
-		if ( $tag_text ) $rule .= 'color:' . esc_attr( $tag_text ) . '!important;';
+		if ( $tag_bg )   $rule .= 'background:' . $tag_bg . '!important;';
+		if ( $tag_text ) $rule .= 'color:' . $tag_text . '!important;';
 		$css .= '.raffle-meta-tag--tag,.raffle-filter-tag,.raffle-filter-tag.is-active{' . $rule . '}';
-		if ( $tag_bg )   $css .= '.raffle-filter-tag-count{background:' . esc_attr( $tag_bg ) . '!important;}';
-		if ( $tag_text ) $css .= '.raffle-filter-tag-count{color:' . esc_attr( $tag_text ) . '!important;}';
+		if ( $tag_bg )   $css .= '.raffle-filter-tag-count{background:' . $tag_bg . '!important;}';
+		if ( $tag_text ) $css .= '.raffle-filter-tag-count{color:' . $tag_text . '!important;}';
 	}
 
 	if ( $css ) {
-		echo '<style id="raffle-badge-colors">' . $css . '</style>' . "\n";
+		echo '<style id="raffle-badge-colors">' . wp_strip_all_tags( $css ) . '</style>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	// Widget icon colour.
-	$icon_desktop = get_option( 'raffle_search_widget_icon_color', '' );
-	$icon_mobile  = get_option( 'raffle_search_widget_icon_color_mobile', '' );
+	$icon_desktop = sanitize_hex_color( get_option( 'raffle_search_widget_icon_color', '' ) );
+	$icon_mobile  = sanitize_hex_color( get_option( 'raffle_search_widget_icon_color_mobile', '' ) );
 
 	if ( $icon_desktop || $icon_mobile ) {
 		$icon_css = '';
-		$desktop_color = $icon_desktop ? esc_attr( $icon_desktop ) : '#333';
 		if ( $icon_desktop ) {
-			$icon_css .= '.raffle-search-widget__trigger{color:' . $desktop_color . ';}';
+			$icon_css .= '.raffle-search-widget__trigger{color:' . $icon_desktop . ';}';
 		}
 		if ( $icon_mobile ) {
-			$icon_css .= '@media(max-width:990px){.raffle-search-widget__trigger{color:' . esc_attr( $icon_mobile ) . ';}}';
+			$icon_css .= '@media(max-width:990px){.raffle-search-widget__trigger{color:' . $icon_mobile . ';}}';
 		}
 		// Attach to both the block style handle and the shortcode style handle
 		// so the override prints right after whichever stylesheet is enqueued.
