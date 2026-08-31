@@ -11,112 +11,113 @@ import {
 	__experimentalVStack as VStack,
 } from '@wordpress/components';
 
-export default function Edit( { attributes, setAttributes } ) {
+export default function Edit({ attributes, setAttributes }) {
 	const { mode, searchPageUrl } = attributes;
 
-	const blockProps = useBlockProps( {
+	const blockProps = useBlockProps({
 		className: 'raffle-search-widget',
-	} );
+	});
 
 	return (
 		<>
 			<InspectorControls>
 				<PanelBody
-					title={ __( 'Widget Settings', 'raffle-search' ) }
-					initialOpen={ true }
+					title={__('Widget Settings', 'kp-search-with-raffle')}
+					initialOpen={true}
 				>
-					<VStack spacing={ 4 }>
+					<VStack spacing={4}>
 						<SelectControl
-							label={ __( 'Action', 'raffle-search' ) }
-							value={ mode }
-							options={ [
+							label={__('Action', 'kp-search-with-raffle')}
+							value={mode}
+							options={[
 								{
 									label: __(
 										'Open search overlay',
-										'raffle-search'
+										'kp-search-with-raffle',
 									),
 									value: 'overlay',
 								},
 								{
 									label: __(
 										'Link to search page',
-										'raffle-search'
+										'kp-search-with-raffle',
 									),
 									value: 'link',
 								},
-							] }
-							onChange={ ( val ) =>
-								setAttributes( { mode: val } )
-							}
+							]}
+							onChange={(val) => setAttributes({ mode: val })}
 						/>
 
-						{ mode === 'link' && (
-							<div className="raffle-search-widget-url-field">
+						{mode === 'link' && (
+							<div className='raffle-search-widget-url-field'>
 								<label
-									htmlFor="raffle-search-page-url"
-									style={ {
+									htmlFor='raffle-search-page-url'
+									style={{
 										display: 'block',
 										marginBottom: '4px',
 										fontWeight: 500,
-									} }
+									}}
 								>
-									{ __( 'Search page URL', 'raffle-search' ) }
+									{__(
+										'Search page URL',
+										'kp-search-with-raffle',
+									)}
 								</label>
 								<URLInput
-									id="raffle-search-page-url"
-									value={ searchPageUrl }
-									onChange={ ( url ) =>
-										setAttributes( { searchPageUrl: url } )
+									id='raffle-search-page-url'
+									value={searchPageUrl}
+									onChange={(url) =>
+										setAttributes({ searchPageUrl: url })
 									}
-									placeholder={ __(
+									placeholder={__(
 										'https://…',
-										'raffle-search'
-									) }
+										'kp-search-with-raffle',
+									)}
 								/>
 							</div>
-						) }
+						)}
 					</VStack>
 				</PanelBody>
 			</InspectorControls>
-			<div { ...blockProps }>
+			<div {...blockProps}>
 				<button
-					className="raffle-search-widget__trigger"
-					aria-label={ __( 'Search', 'raffle-search' ) }
-					type="button"
+					className='raffle-search-widget__trigger'
+					aria-label={__('Search', 'kp-search-with-raffle')}
+					type='button'
 				>
 					<svg
-						width="18"
-						height="18"
-						viewBox="0 0 24 24"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						aria-label="Search"
+						width='18'
+						height='18'
+						viewBox='0 0 24 24'
+						fill='none'
+						xmlns='http://www.w3.org/2000/svg'
+						aria-label='Search'
 					>
 						<circle
-							cx="11"
-							cy="11"
-							r="7"
-							stroke="#333"
-							strokeWidth="2"
-							fill="none"
+							cx='11'
+							cy='11'
+							r='7'
+							stroke='#333'
+							strokeWidth='2'
+							fill='none'
 						/>
 						<line
-							x1="16.5"
-							y1="16.5"
-							x2="22"
-							y2="22"
-							stroke="#333"
-							strokeWidth="2"
-							strokeLinecap="round"
+							x1='16.5'
+							y1='16.5'
+							x2='22'
+							y2='22'
+							stroke='#333'
+							strokeWidth='2'
+							strokeLinecap='round'
 						/>
 					</svg>
 				</button>
-				<span className="raffle-search-widget__label">
-					{ mode === 'link'
-						? __( 'Links to:', 'raffle-search' ) +
+				<span className='raffle-search-widget__label'>
+					{mode === 'link'
+						? __('Links to:', 'kp-search-with-raffle') +
 						  ' ' +
-						  ( searchPageUrl || '—' )
-						: __( 'Opens search overlay', 'raffle-search' ) }
+						  (searchPageUrl || '—')
+						: __('Opens search overlay', 'kp-search-with-raffle')}
 				</span>
 			</div>
 		</>

@@ -1,6 +1,6 @@
-# Raffle Search
+# KP Search Integration with Raffle AI
 
-A WordPress Gutenberg block that integrates [Raffle](https://raffle.ai) search into any post or page. Features include top questions, autocomplete, AI-generated summaries, and full search results. Note that this requires an active subscription with [Raffle](https://raffle.ai) and a published Search Tool.
+A WordPress Gutenberg plugin that integrates [Raffle](https://raffle.ai) search into any post or page through Gutenberg blocks and shortcodes. Features include top questions, autocomplete, AI-generated summaries, and full search results. Note that this requires an active subscription with [Raffle](https://raffle.ai) and a published Search Tool.
 
 ## Requirements
 
@@ -10,7 +10,7 @@ A WordPress Gutenberg block that integrates [Raffle](https://raffle.ai) search i
 
 ## Installation
 
-1. Upload the `raffle-search` folder to `/wp-content/plugins/`.
+1. Upload the `kp-search-with-raffle` folder to `/wp-content/plugins/`.
 2. Activate the plugin in **Plugins > Installed Plugins**.
 3. Go to **Settings > Raffle Search** and enter your:
     - **Base URL** (default: `https://api.raffle.ai/v2`)
@@ -20,13 +20,13 @@ A WordPress Gutenberg block that integrates [Raffle](https://raffle.ai) search i
 
 ### Gutenberg blocks
 
-Insert the **Raffle Search** or **Raffle Search Widget** blocks from the Gutenberg block inserter (category: Widgets). The search block supports wide and full alignment.
+Insert the **KP Raffle Search** or **KP Raffle Search Widget** blocks from the Gutenberg block inserter (category: Widgets). The search block supports wide and full alignment.
 
 ### Shortcodes
 
 You can also embed the blocks via shortcodes — useful in classic editor pages, widgets, or PHP templates.
 
-**Raffle Search** — renders the full search experience:
+**KP Raffle Search** — renders the full search experience:
 
 ```
 [raffle_search]
@@ -37,7 +37,7 @@ You can also embed the blocks via shortcodes — useful in classic editor pages,
 | --------- | --------- | ------------------------------------------------ |
 | `uid`     | _(empty)_ | Override the global Search UID for this instance |
 
-**Raffle Search Widget** — renders a magnifier icon button:
+**KP Raffle Search Widget** — renders a magnifier icon button:
 
 ```
 [raffle_search_widget]
@@ -117,7 +117,7 @@ npm install
 ### Project structure
 
 ```
-raffle-search/
+kp-search-with-raffle/
 ├── src/                      # Source files
 │   ├── index.js              # Block registration (editor entry point)
 │   ├── edit.js               # Block editor component
@@ -135,7 +135,7 @@ raffle-search/
 │   ├── hooks/                # Custom React hooks (e.g. useDebounce)
 │   ├── types/                # Result type definitions
 │   ├── utils/                # Utility helpers (date, html, getResultType)
-│   └── widget/               # Raffle Search Widget block
+│   └── widget/               # KP Raffle Search Widget block
 │       ├── block.json
 │       ├── index.js
 │       ├── edit.js
@@ -148,7 +148,7 @@ raffle-search/
 │   ├── advanced-settings.php # Metadata output helpers
 │   └── helpers.php           # Shared PHP helpers
 ├── languages/                # Translation files (.pot, .po, .mo, .json)
-└── raffle-search.php         # Plugin entry point
+└── kp-search-with-raffle.php         # Plugin entry point
 ```
 
 ### Tech stack
@@ -159,16 +159,16 @@ raffle-search/
 
 ## Translations
 
-All user-facing strings in the frontend React component use `@wordpress/i18n`'s `__()` function with the `raffle-search` text domain. WordPress delivers translations to the JS bundle via an inline `wp.i18n.setLocaleData()` call generated from a JSON file in the `languages/` directory.
+All user-facing strings in the frontend React component use `@wordpress/i18n`'s `__()` function with the `kp-search-with-raffle` text domain. WordPress delivers translations to the JS bundle via an inline `wp.i18n.setLocaleData()` call generated from a JSON file in the `languages/` directory.
 
 ### Languages directory
 
 ```
 languages/
-├── raffle-search.pot                                          # Translation template (all source strings)
-├── raffle-search.po / .mo                                     # English fallback
-├── raffle-search-da_DK.po / .mo                               # Danish
-└── raffle-search-da_DK-ec8a27340a0ab960d3737433af4bcfae.json  # Danish JS translations
+├── kp-search-with-raffle.pot                                          # Translation template (all source strings)
+├── kp-search-with-raffle.po / .mo                                     # English fallback
+├── kp-search-with-raffle-da_DK.po / .mo                               # Danish
+└── kp-search-with-raffle-da_DK-ec8a27340a0ab960d3737433af4bcfae.json  # Danish JS translations
 ```
 
 Each language requires three files: a `.po` (human-editable), a compiled `.mo`, and a `.json` for the JS bundle.
@@ -183,7 +183,7 @@ npm run i18n:update
 
 Step-by-step:
 
-1. Open the relevant `.po` file (e.g. `languages/raffle-search-da_DK.po`) in [Poedit](https://poedit.net) or any text editor.
+1. Open the relevant `.po` file (e.g. `languages/kp-search-with-raffle-da_DK.po`) in [Poedit](https://poedit.net) or any text editor.
 2. Update the `msgstr` values for any strings you want to change.
 3. Regenerate and merge catalogs:
     ```bash
@@ -204,12 +204,12 @@ Step-by-step:
 
 1. **Copy the template** to a new `.po` file named after the locale:
     ```bash
-    cp languages/raffle-search.pot languages/raffle-search-fr_FR.po
+    cp languages/kp-search-with-raffle.pot languages/kp-search-with-raffle-fr_FR.po
     ```
 2. **Edit the `.po` file** — fill in `msgstr` for each `msgid`, and update the header fields (`Language`, `Language-Team`, `PO-Revision-Date`).
 3. **Compile the `.mo`** file:
     ```bash
-    msgfmt languages/raffle-search-fr_FR.po -o languages/raffle-search-fr_FR.mo
+    msgfmt languages/kp-search-with-raffle-fr_FR.po -o languages/kp-search-with-raffle-fr_FR.mo
     ```
 4. **Create the JS JSON file** (see below).
 
@@ -228,7 +228,7 @@ echo -n "build/view.js" | md5
 # ec8a27340a0ab960d3737433af4bcfae
 ```
 
-> **Important:** Do not include the full `wp-content/plugins/raffle-search/` prefix — WordPress strips that automatically before computing the hash.
+> **Important:** Do not include the full `wp-content/plugins/kp-search-with-raffle/` prefix — WordPress strips that automatically before computing the hash.
 
 The JSON file must have this structure:
 
@@ -236,7 +236,7 @@ The JSON file must have this structure:
 {
 	"translation-revision-date": "2026-01-01T00:00:00+00:00",
 	"generator": "manual",
-	"source": "languages/raffle-search-fr_FR.po",
+	"source": "languages/kp-search-with-raffle-fr_FR.po",
 	"domain": "messages",
 	"locale_data": {
 		"messages": {
@@ -263,7 +263,7 @@ The JSON file must have this structure:
 }
 ```
 
-Save it as `languages/raffle-search-fr_FR-ec8a27340a0ab960d3737433af4bcfae.json`.
+Save it as `languages/kp-search-with-raffle-fr_FR-ec8a27340a0ab960d3737433af4bcfae.json`.
 
 ### Adding new translatable strings
 
@@ -272,7 +272,7 @@ When adding new user-facing strings to `src/components/RaffleSearch.jsx`, wrap t
 ```js
 import { __ } from '@wordpress/i18n';
 
-__('Your new string', 'raffle-search');
+__('Your new string', 'kp-search-with-raffle');
 ```
 
 After adding strings, rebuild the plugin:

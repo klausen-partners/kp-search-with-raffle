@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 /**
-* Advanced settings for the Raffle Search plugin.
+* Advanced settings for the KP Raffle Search plugin.
 *
 * Handles the registration of post_tag taxonomy for pages and ensures
 * full UI and REST support when enabled in the plugin settings.

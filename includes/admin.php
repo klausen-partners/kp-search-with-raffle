@@ -3,9 +3,9 @@ require_once __DIR__ . '/helpers.php';
 require_once __DIR__ . '/advanced-settings.php';
 
 /**
- * Admin settings page for the Raffle Search plugin.
+ * Admin settings page for the KP Raffle Search plugin.
  *
- * Adds a "Raffle Search" submenu under Settings and provides fields
+ * Adds a "KP Raffle Search" submenu under Settings and provides fields
  * to store baseUrl and searchUid in the WordPress database.
  */
 
@@ -17,10 +17,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 function raffle_search_add_settings_page() {
 	add_submenu_page(
 		'options-general.php',
-		__( 'Raffle Search', 'raffle-search' ),
-		__( 'Raffle Search', 'raffle-search' ),
+		__( 'KP Raffle Search', 'kp-search-with-raffle' ),
+		__( 'KP Raffle Search', 'kp-search-with-raffle' ),
 		'manage_options',
-		'raffle-search-settings',
+		'kp-search-with-raffle-settings',
 		'raffle_search_render_settings_page'
 	);
 }
@@ -255,24 +255,24 @@ function raffle_search_register_settings() {
 	// ── General tab ──────────────────────────────────────────────
 	add_settings_section(
 		'raffle_search_general_section',
-		__( 'API Configuration', 'raffle-search' ),
+		__( 'API Configuration', 'kp-search-with-raffle' ),
 		'raffle_search_section_description',
-		'raffle-search-general'
+		'kp-search-with-raffle-general'
 	);
 
 	add_settings_field(
 		'raffle_search_base_url',
-		__( 'Base URL', 'raffle-search' ),
+		__( 'Base URL', 'kp-search-with-raffle' ),
 		'raffle_search_field_base_url',
-		'raffle-search-general',
+		'kp-search-with-raffle-general',
 		'raffle_search_general_section'
 	);
 
 	add_settings_field(
 		'raffle_search_uid',
-		__( 'Search UID', 'raffle-search' ),
+		__( 'Search UID', 'kp-search-with-raffle' ),
 		'raffle_search_field_search_uid',
-		'raffle-search-general',
+		'kp-search-with-raffle-general',
 		'raffle_search_general_section'
 	);
 
@@ -281,30 +281,30 @@ function raffle_search_register_settings() {
 		'raffle_search_metadata_section',
 		'',
 		'raffle_search_metadata_section_description',
-		'raffle-search-metadata'
+		'kp-search-with-raffle-metadata'
 	);
 
 	add_settings_field(
 		'raffle_search_enable_article_tag_meta',
-		__( 'Add article:tag meta', 'raffle-search' ),
+		__( 'Add article:tag meta', 'kp-search-with-raffle' ),
 		'raffle_search_field_enable_article_tag_meta',
-		'raffle-search-metadata',
+		'kp-search-with-raffle-metadata',
 		'raffle_search_metadata_section'
 	);
 
 	add_settings_field(
 		'raffle_search_enable_raffle_type_meta',
-		__( 'Add raffle:type meta', 'raffle-search' ),
+		__( 'Add raffle:type meta', 'kp-search-with-raffle' ),
 		'raffle_search_field_enable_raffle_type_meta',
-		'raffle-search-metadata',
+		'kp-search-with-raffle-metadata',
 		'raffle_search_metadata_section'
 	);
 
 	add_settings_field(
 		'raffle_search_enable_tags_on_pages',
-		__( 'Enable tags for pages', 'raffle-search' ),
+		__( 'Enable tags for pages', 'kp-search-with-raffle' ),
 		'raffle_search_field_enable_tags_on_pages',
-		'raffle-search-metadata',
+		'kp-search-with-raffle-metadata',
 		'raffle_search_metadata_section'
 	);
 
@@ -313,125 +313,125 @@ function raffle_search_register_settings() {
 		'raffle_search_settings_section',
 		'',
 		'raffle_search_settings_section_description',
-		'raffle-search-vis-settings'
+		'kp-search-with-raffle-vis-settings'
 	);
 
 	add_settings_field(
 		'raffle_search_show_references',
-		__( 'Show references', 'raffle-search' ),
+		__( 'Show references', 'kp-search-with-raffle' ),
 		'raffle_search_field_show_references',
-		'raffle-search-vis-settings',
+		'kp-search-with-raffle-vis-settings',
 		'raffle_search_settings_section'
 	);
 
 	add_settings_field(
 		'raffle_search_hide_summary_button',
-		__( 'Hide summary button', 'raffle-search' ),
+		__( 'Hide summary button', 'kp-search-with-raffle' ),
 		'raffle_search_field_hide_summary_button',
-		'raffle-search-vis-settings',
+		'kp-search-with-raffle-vis-settings',
 		'raffle_search_settings_section'
 	);
 
 	add_settings_field(
 		'raffle_search_excerpt_trim_length',
-		__( 'Excerpt trim length', 'raffle-search' ),
+		__( 'Excerpt trim length', 'kp-search-with-raffle' ),
 		'raffle_search_field_excerpt_trim_length',
-		'raffle-search-vis-settings',
+		'kp-search-with-raffle-vis-settings',
 		'raffle_search_settings_section'
 	);
 
     add_settings_field(
         'raffle_search_instant_answer_excerpt_trim_length',
-        __( 'Instant Answers excerpt trim length', 'raffle-search' ),
+        __( 'Instant Answers excerpt trim length', 'kp-search-with-raffle' ),
         'raffle_search_field_instant_answer_excerpt_trim_length',
-        'raffle-search-vis-settings',
+        'kp-search-with-raffle-vis-settings',
         'raffle_search_settings_section'
     );
 
 	add_settings_field(
 		'raffle_search_hide_excerpt_types',
-		__( 'Hide excerpts for types', 'raffle-search' ),
+		__( 'Hide excerpts for types', 'kp-search-with-raffle' ),
 		'raffle_search_field_hide_excerpt_types',
-		'raffle-search-vis-settings',
+		'kp-search-with-raffle-vis-settings',
 		'raffle_search_settings_section'
 	);
 
 	add_settings_field(
 		'raffle_search_hidden_types',
-		__( 'Filter Types', 'raffle-search' ),
+		__( 'Filter Types', 'kp-search-with-raffle' ),
 		'raffle_search_field_hidden_types',
-		'raffle-search-vis-settings',
+		'kp-search-with-raffle-vis-settings',
 		'raffle_search_settings_section'
 	);
 
 	add_settings_field(
 		'raffle_search_hidden_tags',
-		__( 'Filter Tags', 'raffle-search' ),
+		__( 'Filter Tags', 'kp-search-with-raffle' ),
 		'raffle_search_field_hidden_tags',
-		'raffle-search-vis-settings',
+		'kp-search-with-raffle-vis-settings',
 		'raffle_search_settings_section'
 	);
 
 	// ── Design tab ───────────────────────────────────────────────
 	add_settings_section(
 		'raffle_search_design_images_section',
-		__( 'Images', 'raffle-search' ),
+		__( 'Images', 'kp-search-with-raffle' ),
 		'__return_false',
-		'raffle-search-design'
+		'kp-search-with-raffle-design'
 	);
 
 	add_settings_field(
 		'raffle_search_default_image_url',
-		__( 'Default result image', 'raffle-search' ),
+		__( 'Default result image', 'kp-search-with-raffle' ),
 		'raffle_search_field_default_image_url',
-		'raffle-search-design',
+		'kp-search-with-raffle-design',
 		'raffle_search_design_images_section'
 	);
 
 	add_settings_field(
 		'raffle_search_image_width',
-		__( 'Result image width', 'raffle-search' ),
+		__( 'Result image width', 'kp-search-with-raffle' ),
 		'raffle_search_field_image_width',
-		'raffle-search-design',
+		'kp-search-with-raffle-design',
 		'raffle_search_design_images_section'
 	);
 
 	add_settings_section(
 		'raffle_search_badge_colors_section',
-		__( 'Badge colors', 'raffle-search' ),
+		__( 'Badge colors', 'kp-search-with-raffle' ),
 		'raffle_search_badge_colors_section_description',
-		'raffle-search-design'
+		'kp-search-with-raffle-design'
 	);
 
 	add_settings_field(
 		'raffle_search_color_type',
-		__( 'Type badge', 'raffle-search' ),
+		__( 'Type badge', 'kp-search-with-raffle' ),
 		'raffle_search_field_type_badge_colors',
-		'raffle-search-design',
+		'kp-search-with-raffle-design',
 		'raffle_search_badge_colors_section'
 	);
 
 	add_settings_field(
 		'raffle_search_color_tag',
-		__( 'Tag badge', 'raffle-search' ),
+		__( 'Tag badge', 'kp-search-with-raffle' ),
 		'raffle_search_field_tag_badge_colors',
-		'raffle-search-design',
+		'kp-search-with-raffle-design',
 		'raffle_search_badge_colors_section'
 	);
 
 	// ── Design tab: Widget Icon section ─────────────────────────
 	add_settings_section(
 		'raffle_search_widget_icon_section',
-		__( 'Widget icon', 'raffle-search' ),
+		__( 'Widget icon', 'kp-search-with-raffle' ),
 		'raffle_search_widget_icon_section_description',
-		'raffle-search-design'
+		'kp-search-with-raffle-design'
 	);
 
 	add_settings_field(
 		'raffle_search_widget_icon_color',
-		__( 'Icon color', 'raffle-search' ),
+		__( 'Icon color', 'kp-search-with-raffle' ),
 		'raffle_search_field_widget_icon_color',
-		'raffle-search-design',
+		'kp-search-with-raffle-design',
 		'raffle_search_widget_icon_section'
 	);
 // Field for enabling tags on pages
@@ -441,7 +441,7 @@ function raffle_search_field_enable_tags_on_pages() {
 <label for="raffle_search_enable_tags_on_pages">
     <input type="checkbox" id="raffle_search_enable_tags_on_pages" name="raffle_search_enable_tags_on_pages" value="1"
         <?php checked( 1, $value ); ?> />
-    <?php esc_html_e( 'Allow tags to be added to pages (not just posts).', 'raffle-search' ); ?>
+    <?php esc_html_e( 'Allow tags to be added to pages (not just posts).', 'kp-search-with-raffle' ); ?>
 </label>
 <?php
 }
@@ -468,7 +468,7 @@ add_action( 'save_post_page', function( $post_id ) {
 <label for="raffle_search_enable_article_tag_meta">
     <input type="checkbox" id="raffle_search_enable_article_tag_meta" name="raffle_search_enable_article_tag_meta"
         value="1" <?php checked( 1, $value ); ?> />
-    <?php esc_html_e( 'Add a meta tag with all post/page tags as a string array (article:tag) in the page head.', 'raffle-search' ); ?>
+    <?php esc_html_e( 'Add a meta tag with all post/page tags as a string array (article:tag) in the page head.', 'kp-search-with-raffle' ); ?>
 </label>
 <?php
 }
@@ -480,7 +480,7 @@ function raffle_search_field_enable_raffle_type_meta() {
 <label for="raffle_search_enable_raffle_type_meta">
     <input type="checkbox" id="raffle_search_enable_raffle_type_meta" name="raffle_search_enable_raffle_type_meta"
         value="1" <?php checked( 1, $value ); ?> />
-    <?php esc_html_e( 'Add a raffle:type meta tag identifying the content type (post, page, or custom post type singular name) in the page head.', 'raffle-search' ); ?>
+    <?php esc_html_e( 'Add a raffle:type meta tag identifying the content type (post, page, or custom post type singular name) in the page head.', 'kp-search-with-raffle' ); ?>
 </label>
 <?php
 }
@@ -491,7 +491,7 @@ function raffle_search_field_hide_excerpt_types() {
 <input type="text" id="raffle_search_hide_excerpt_types" name="raffle_search_hide_excerpt_types"
     value="<?php echo esc_attr( $value ); ?>" class="regular-text" placeholder="pdf,docx" />
 <p class="description">
-    <?php esc_html_e( 'Comma-separated list of result types (e.g. pdf,docx) for which excerpts/snippets should be hidden. You can add your own types.', 'raffle-search' ); ?>
+    <?php esc_html_e( 'Comma-separated list of result types (e.g. pdf,docx) for which excerpts/snippets should be hidden. You can add your own types.', 'kp-search-with-raffle' ); ?>
 </p>
 <?php
 }
@@ -513,15 +513,15 @@ function raffle_search_field_hidden_types() {
 <div style="display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;">
     <select id="raffle_search_types_mode" name="raffle_search_types_mode" style="height:30px;">
         <option value="exclude" <?php selected( $mode_value, 'exclude' ); ?>>
-            <?php esc_html_e( 'Exclude', 'raffle-search' ); ?></option>
+            <?php esc_html_e( 'Exclude', 'kp-search-with-raffle' ); ?></option>
         <option value="include" <?php selected( $mode_value, 'include' ); ?>>
-            <?php esc_html_e( 'Include only', 'raffle-search' ); ?></option>
+            <?php esc_html_e( 'Include only', 'kp-search-with-raffle' ); ?></option>
     </select>
     <input type="text" id="raffle_search_hidden_types" name="raffle_search_hidden_types"
         value="<?php echo esc_attr( $types_value ); ?>" class="regular-text" placeholder="news,document,page" />
 </div>
 <p class="description">
-    <?php esc_html_e( 'Comma-separated list of type names (news, document, page). "Exclude" hides these types from result cards and type filters; "Include only" shows only these types.', 'raffle-search' ); ?>
+    <?php esc_html_e( 'Comma-separated list of type names (news, document, page). "Exclude" hides these types from result cards and type filters; "Include only" shows only these types.', 'kp-search-with-raffle' ); ?>
 </p>
 <?php
 }
@@ -533,15 +533,15 @@ function raffle_search_field_hidden_tags() {
 <div style="display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;">
     <select id="raffle_search_tags_mode" name="raffle_search_tags_mode" style="height:30px;">
         <option value="exclude" <?php selected( $mode_value, 'exclude' ); ?>>
-            <?php esc_html_e( 'Exclude', 'raffle-search' ); ?></option>
+            <?php esc_html_e( 'Exclude', 'kp-search-with-raffle' ); ?></option>
         <option value="include" <?php selected( $mode_value, 'include' ); ?>>
-            <?php esc_html_e( 'Include only', 'raffle-search' ); ?></option>
+            <?php esc_html_e( 'Include only', 'kp-search-with-raffle' ); ?></option>
     </select>
     <input type="text" id="raffle_search_hidden_tags" name="raffle_search_hidden_tags"
         value="<?php echo esc_attr( $tags_value ); ?>" class="regular-text" placeholder="internal,draft" />
 </div>
 <p class="description">
-    <?php esc_html_e( 'Comma-separated list of tag names. "Exclude" hides these tags; "Include only" shows only these tags on result cards and tag filters.', 'raffle-search' ); ?>
+    <?php esc_html_e( 'Comma-separated list of tag names. "Exclude" hides these tags; "Include only" shows only these tags on result cards and tag filters.', 'kp-search-with-raffle' ); ?>
 </p>
 <?php
 }
@@ -551,7 +551,7 @@ function raffle_search_field_hide_summary_button() {
 <label for="raffle_search_hide_summary_button">
     <input type="checkbox" id="raffle_search_hide_summary_button" name="raffle_search_hide_summary_button" value="1"
         <?php checked( 1, $value ); ?> />
-    <?php esc_html_e( 'Hide the "Learn More" button in the AI summary.', 'raffle-search' ); ?>
+    <?php esc_html_e( 'Hide the "Learn More" button in the AI summary.', 'kp-search-with-raffle' ); ?>
 </label>
 <?php
 }
@@ -562,7 +562,7 @@ function raffle_search_field_image_width() {
 <input type="number" id="raffle_search_image_width" name="raffle_search_image_width"
     value="<?php echo esc_attr( $value ); ?>" class="small-text" min="0" max="600" step="10" />
 <p class="description">
-    <?php esc_html_e( 'Width of the result thumbnail image in pixels. Set to 0 to hide images entirely. Default: 250.', 'raffle-search' ); ?>
+    <?php esc_html_e( 'Width of the result thumbnail image in pixels. Set to 0 to hide images entirely. Default: 250.', 'kp-search-with-raffle' ); ?>
 </p>
 <?php
 }
@@ -570,7 +570,7 @@ function raffle_search_field_image_width() {
 function raffle_search_field_default_image_url() {
 	$value = get_option( 'raffle_search_default_image_url', '' );
 	?>
-<div id="raffle-search-default-image-upload">
+<div id="kp-search-with-raffle-default-image-upload">
     <?php if ( $value ) : ?>
     <img src="<?php echo esc_url( $value ); ?>"
         style="max-width:100px;max-height:100px;display:block;margin-bottom:8px;" alt="" />
@@ -578,9 +578,9 @@ function raffle_search_field_default_image_url() {
     <input type="url" id="raffle_search_default_image_url" name="raffle_search_default_image_url"
         value="<?php echo esc_attr( $value ); ?>" class="regular-text" placeholder="https://..." />
     <button type="button" class="button"
-        id="raffle_search_default_image_upload_btn"><?php esc_html_e( 'Upload or Select Image', 'raffle-search' ); ?></button>
+        id="raffle_search_default_image_upload_btn"><?php esc_html_e( 'Upload or Select Image', 'kp-search-with-raffle' ); ?></button>
     <p class="description">
-        <?php esc_html_e( 'Select or upload a default image to use when no image is found in search results.', 'raffle-search' ); ?>
+        <?php esc_html_e( 'Select or upload a default image to use when no image is found in search results.', 'kp-search-with-raffle' ); ?>
     </p>
 </div>
 <script>
@@ -594,17 +594,18 @@ function raffle_search_field_default_image_url() {
                 return;
             }
             frame = wp.media({
-                title: '<?php echo esc_js( __( 'Select or Upload Default Image', 'raffle-search' ) ); ?>',
+                title: '<?php echo esc_js( __( 'Select or Upload Default Image', 'kp-search-with-raffle' ) ); ?>',
                 button: {
-                    text: '<?php echo esc_js( __( 'Use this image', 'raffle-search' ) ); ?>'
+                    text: '<?php echo esc_js( __( 'Use this image', 'kp-search-with-raffle' ) ); ?>'
                 },
                 multiple: false
             });
             frame.on('select', function() {
                 var attachment = frame.state().get('selection').first().toJSON();
                 $('#raffle_search_default_image_url').val(attachment.url).trigger('change');
-                $('#raffle-search-default-image-upload img').remove();
-                $('#raffle-search-default-image-upload').prepend('<img src="' + attachment
+                $('#kp-search-with-raffle-default-image-upload img').remove();
+                $('#kp-search-with-raffle-default-image-upload').prepend('<img src="' +
+                    attachment
                     .url +
                     '" style="max-width:100px;max-height:100px;display:block;margin-bottom:8px;" />'
                 );
@@ -618,7 +619,7 @@ function raffle_search_field_default_image_url() {
 }
 
 function raffle_search_badge_colors_section_description() {
-	echo '<p>' . esc_html__( 'Customise the background and text colours for type and tag badges on result cards. Leave blank to use the defaults.', 'raffle-search' ) . '</p>';
+	echo '<p>' . esc_html__( 'Customise the background and text colours for type and tag badges on result cards. Leave blank to use the defaults.', 'kp-search-with-raffle' ) . '</p>';
 }
 
 function raffle_search_field_type_badge_colors() {
@@ -629,7 +630,7 @@ function raffle_search_field_type_badge_colors() {
 		get_option( 'raffle_search_color_type_text', '' ),
 		'#fef3c7',
 		'#b45309',
-		__( 'Type', 'raffle-search' )
+		__( 'Type', 'kp-search-with-raffle' )
 	);
 }
 
@@ -641,12 +642,12 @@ function raffle_search_field_tag_badge_colors() {
 		get_option( 'raffle_search_color_tag_text', '' ),
 		'#d1fae5',
 		'#047857',
-		__( 'Tag', 'raffle-search' )
+		__( 'Tag', 'kp-search-with-raffle' )
 	);
 }
 
 function raffle_search_widget_icon_section_description() {
-	echo '<p>' . esc_html__( 'Customise the magnifier icon colour in the Raffle Search Widget. Set a mobile colour to override on small screens; leave it blank to inherit the desktop colour.', 'raffle-search' ) . '</p>';
+	echo '<p>' . esc_html__( 'Customise the magnifier icon colour in the KP Raffle Search Widget. Set a mobile colour to override on small screens; leave it blank to inherit the desktop colour.', 'kp-search-with-raffle' ) . '</p>';
 }
 
 function raffle_search_field_widget_icon_color() {
@@ -659,7 +660,7 @@ function raffle_search_field_widget_icon_color() {
 <div style="display:flex;gap:2rem;align-items:flex-start;flex-wrap:wrap;">
     <div style="display:flex;flex-direction:column;gap:4px;">
         <span
-            style="font-size:.82rem;font-weight:600;color:#555;"><?php esc_html_e( 'Desktop', 'raffle-search' ); ?></span>
+            style="font-size:.82rem;font-weight:600;color:#555;"><?php esc_html_e( 'Desktop', 'kp-search-with-raffle' ); ?></span>
         <button type="button" class="raffle-swatch-trigger" data-target="raffle_search_widget_icon_color"
             data-preview="raffle-widget-icon-preview" data-prop="color"
             data-default="<?php echo esc_attr( $default ); ?>"
@@ -669,7 +670,7 @@ function raffle_search_field_widget_icon_color() {
     </div>
     <div style="display:flex;flex-direction:column;gap:4px;">
         <span
-            style="font-size:.82rem;font-weight:600;color:#555;"><?php esc_html_e( 'Mobile', 'raffle-search' ); ?></span>
+            style="font-size:.82rem;font-weight:600;color:#555;"><?php esc_html_e( 'Mobile', 'kp-search-with-raffle' ); ?></span>
         <button type="button" class="raffle-swatch-trigger" data-target="raffle_search_widget_icon_color_mobile"
             data-preview="raffle-widget-icon-preview-mobile" data-prop="color"
             data-default="<?php echo esc_attr( $default ); ?>"
@@ -679,7 +680,7 @@ function raffle_search_field_widget_icon_color() {
     </div>
     <div style="display:flex;flex-direction:column;gap:4px;">
         <span
-            style="font-size:.82rem;font-weight:600;color:#555;"><?php esc_html_e( 'Preview', 'raffle-search' ); ?></span>
+            style="font-size:.82rem;font-weight:600;color:#555;"><?php esc_html_e( 'Preview', 'kp-search-with-raffle' ); ?></span>
         <div style="display:flex;gap:12px;align-items:center;">
             <span id="raffle-widget-icon-preview" style="color:<?php echo esc_attr( $preview_desktop ); ?>;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -696,13 +697,13 @@ function raffle_search_field_widget_icon_color() {
                         stroke-linecap="round" />
                 </svg>
                 <span
-                    style="display:block;font-size:.7rem;color:#888;margin-top:2px;"><?php esc_html_e( '(mobile)', 'raffle-search' ); ?></span>
+                    style="display:block;font-size:.7rem;color:#888;margin-top:2px;"><?php esc_html_e( '(mobile)', 'kp-search-with-raffle' ); ?></span>
             </span>
         </div>
     </div>
 </div>
 <p class="description" style="margin-top:8px;">
-    <?php esc_html_e( 'Leave blank to use the default (#333). If no mobile colour is set, the desktop colour is used on all screen sizes.', 'raffle-search' ); ?>
+    <?php esc_html_e( 'Leave blank to use the default (#333). If no mobile colour is set, the desktop colour is used on all screen sizes.', 'kp-search-with-raffle' ); ?>
 </p>
 <?php
 }
@@ -714,7 +715,7 @@ function raffle_search_render_color_pair( $bg_id, $text_id, $bg_val, $text_val, 
 <div class="raffle-color-pair" style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;">
     <div style="display:flex;flex-direction:column;gap:4px;">
         <span
-            style="font-size:.82rem;font-weight:600;color:#555;"><?php esc_html_e( 'Background', 'raffle-search' ); ?></span>
+            style="font-size:.82rem;font-weight:600;color:#555;"><?php esc_html_e( 'Background', 'kp-search-with-raffle' ); ?></span>
         <button type="button" class="raffle-swatch-trigger" data-target="<?php echo esc_attr( $bg_id ); ?>"
             data-preview="preview-<?php echo esc_attr( $bg_id ); ?>" data-prop="background"
             data-default="<?php echo esc_attr( $default_bg ); ?>"
@@ -724,7 +725,7 @@ function raffle_search_render_color_pair( $bg_id, $text_id, $bg_val, $text_val, 
     </div>
     <div style="display:flex;flex-direction:column;gap:4px;">
         <span
-            style="font-size:.82rem;font-weight:600;color:#555;"><?php esc_html_e( 'Text', 'raffle-search' ); ?></span>
+            style="font-size:.82rem;font-weight:600;color:#555;"><?php esc_html_e( 'Text', 'kp-search-with-raffle' ); ?></span>
         <button type="button" class="raffle-swatch-trigger" data-target="<?php echo esc_attr( $text_id ); ?>"
             data-preview="preview-<?php echo esc_attr( $bg_id ); ?>" data-prop="color"
             data-default="<?php echo esc_attr( $default_text ); ?>"
@@ -734,7 +735,7 @@ function raffle_search_render_color_pair( $bg_id, $text_id, $bg_val, $text_val, 
     </div>
     <div style="display:flex;flex-direction:column;gap:4px;">
         <span
-            style="font-size:.82rem;font-weight:600;color:#555;"><?php esc_html_e( 'Preview', 'raffle-search' ); ?></span>
+            style="font-size:.82rem;font-weight:600;color:#555;"><?php esc_html_e( 'Preview', 'kp-search-with-raffle' ); ?></span>
         <span id="preview-<?php echo esc_attr( $bg_id ); ?>"
             style="display:inline-flex;align-items:center;padding:.2em .85em;border-radius:999px;font-size:.85rem;font-weight:500;line-height:1.6;background:<?php echo esc_attr( $preview_bg ); ?>;color:<?php echo esc_attr( $preview_text ); ?>;">
             <?php echo esc_html( $label ); ?>
@@ -747,7 +748,7 @@ function raffle_search_render_color_pair( $bg_id, $text_id, $bg_val, $text_val, 
 add_action( 'admin_init', 'raffle_search_register_settings' );
 
 function raffle_search_enqueue_color_picker( $hook ) {
-	if ( 'settings_page_raffle-search-settings' !== $hook ) {
+	if ( 'settings_page_kp-search-with-raffle-settings' !== $hook ) {
 		return;
 	}
 	wp_enqueue_style( 'wp-color-picker' );
@@ -794,28 +795,28 @@ function raffle_search_output_badge_color_styles() {
 	if ( $icon_desktop || $icon_mobile ) {
 		$icon_css = '';
 		if ( $icon_desktop ) {
-			$icon_css .= '.raffle-search-widget__trigger{color:' . $icon_desktop . ';}';
+			$icon_css .= '.kp-search-with-raffle-widget__trigger{color:' . $icon_desktop . ';}';
 		}
 		if ( $icon_mobile ) {
-			$icon_css .= '@media(max-width:990px){.raffle-search-widget__trigger{color:' . $icon_mobile . ';}}';
+			$icon_css .= '@media(max-width:990px){.kp-search-with-raffle-widget__trigger{color:' . $icon_mobile . ';}}';
 		}
 		// Attach to both the block style handle and the shortcode style handle
 		// so the override prints right after whichever stylesheet is enqueued.
 		$widget_block_handle = function_exists( 'generate_block_asset_handle' )
-			? generate_block_asset_handle( 'raffle-search/widget', 'style' )
+			? generate_block_asset_handle( 'kp-search-with-raffle/widget', 'style' )
 			: '';
 		if ( $widget_block_handle && wp_style_is( $widget_block_handle, 'registered' ) ) {
 			wp_add_inline_style( $widget_block_handle, $icon_css );
 		}
-		if ( wp_style_is( 'raffle-search-widget-shortcode-style', 'registered' ) ) {
-			wp_add_inline_style( 'raffle-search-widget-shortcode-style', $icon_css );
+		if ( wp_style_is( 'kp-search-with-raffle-widget-shortcode-style', 'registered' ) ) {
+			wp_add_inline_style( 'kp-search-with-raffle-widget-shortcode-style', $icon_css );
 		}
 	}
 }
 add_action( 'wp_head', 'raffle_search_output_badge_color_styles' );
 
 function raffle_search_section_description() {
-	echo '<p>' . esc_html__( 'Enter your Raffle AI credentials. Find these in the Raffle Web App under your API User Interface settings.', 'raffle-search' ) . '</p>';
+	echo '<p>' . esc_html__( 'Enter your Raffle AI credentials. Find these in the Raffle Web App under your API User Interface settings.', 'kp-search-with-raffle' ) . '</p>';
 }
 
 function raffle_search_metadata_section_description() {
@@ -823,26 +824,26 @@ function raffle_search_metadata_section_description() {
 	$ref_url    = 'https://docs.raffle.ai/api/guides/search-results-customization/metadata-selectors/';
 	$adv_url    = 'https://app.raffle.ai';
 	?>
-<p><?php esc_html_e( 'Update WordPress meta-data that allows Raffle to improve the index. Note that changes will not affect the index until the next indexing schedule – usually within 1 day.', 'raffle-search' ); ?>
+<p><?php esc_html_e( 'Update WordPress meta-data that allows Raffle to improve the index. Note that changes will not affect the index until the next indexing schedule – usually within 1 day.', 'kp-search-with-raffle' ); ?>
 </p>
 <p>
-    <?php esc_html_e( 'The following metadata attributes are supported:', 'raffle-search' ); ?>
+    <?php esc_html_e( 'The following metadata attributes are supported:', 'kp-search-with-raffle' ); ?>
     <code>published_time</code>, <code>description</code>, <code>image</code>, <code>tag</code>
 </p>
-<p><?php esc_html_e( 'You need to add these items to your index under', 'raffle-search' ); ?>
-    <strong><?php esc_html_e( 'Advanced settings', 'raffle-search' ); ?></strong>:
+<p><?php esc_html_e( 'You need to add these items to your index under', 'kp-search-with-raffle' ); ?>
+    <strong><?php esc_html_e( 'Advanced settings', 'kp-search-with-raffle' ); ?></strong>:
 </p>
 <p><img src="<?php echo esc_url( $img_url ); ?>" width="700" alt="
-        <?php esc_attr_e( 'Metadata sample screenshot', 'raffle-search' ); ?>"
+        <?php esc_attr_e( 'Metadata sample screenshot', 'kp-search-with-raffle' ); ?>"
         style="max-width:100%;height:auto;border:1px solid #ddd;border-radius:4px;" /></p>
 <p><a href="<?php echo esc_url( $ref_url ); ?>" target="_blank"
-        rel="noopener noreferrer"><?php esc_html_e( 'Reference: Metadata Selectors – Raffle Docs', 'raffle-search' ); ?></a>
+        rel="noopener noreferrer"><?php esc_html_e( 'Reference: Metadata Selectors – Raffle Docs', 'kp-search-with-raffle' ); ?></a>
 </p>
 <?php
 }
 
 function raffle_search_settings_section_description() {
-	echo '<p>' . esc_html__( 'Modify the visibility and data structure of search results.', 'raffle-search' ) . '</p>';
+	echo '<p>' . esc_html__( 'Modify the visibility and data structure of search results.', 'kp-search-with-raffle' ) . '</p>';
 }
 
 function raffle_search_field_base_url() {
@@ -851,7 +852,8 @@ function raffle_search_field_base_url() {
 <input type="url" id="raffle_search_base_url" name="raffle_search_base_url" value="<?php echo esc_attr( $value ); ?>"
     class="regular-text" placeholder="https://api.raffle.ai/v2" />
 <p class="description">
-    <?php esc_html_e( 'The Raffle API base URL. Defaults to https://api.raffle.ai/v2.', 'raffle-search' ); ?></p>
+    <?php esc_html_e( 'The Raffle API base URL. Defaults to https://api.raffle.ai/v2.', 'kp-search-with-raffle' ); ?>
+</p>
 <?php
 }
 
@@ -865,7 +867,7 @@ function raffle_search_field_search_uid() {
 		if (f.type === 'password') { f.type = 'text'; this.textContent = 'Hide'; } else { f.type = 'password'; this.textContent = 'Show'; }
 	" style="margin-left:8px;">Show</button>
 <p class="description">
-    <?php esc_html_e( 'The UID of your Raffle Search UI (Tool UID). Found in the Install modal of your tool in the Raffle Web App.', 'raffle-search' ); ?>
+    <?php esc_html_e( 'The UID of your Raffle Search UI (Tool UID). Found in the Install modal of your tool in the Raffle Web App.', 'kp-search-with-raffle' ); ?>
 </p>
 <?php
 }
@@ -876,7 +878,7 @@ function raffle_search_field_show_references() {
 <label for="raffle_search_show_references">
     <input type="checkbox" id="raffle_search_show_references" name="raffle_search_show_references" value="1"
         <?php checked( 1, $value ); ?> />
-    <?php esc_html_e( 'Display the References list below the AI summary.', 'raffle-search' ); ?>
+    <?php esc_html_e( 'Display the References list below the AI summary.', 'kp-search-with-raffle' ); ?>
 </label>
 <?php
 }
@@ -897,7 +899,7 @@ function raffle_search_field_excerpt_trim_length() {
 <input type="number" id="raffle_search_excerpt_trim_length" name="raffle_search_excerpt_trim_length"
     value="<?php echo esc_attr( $value ); ?>" class="small-text" min="1" placeholder="None" />
 <p class="description">
-    <?php esc_html_e( 'Maximum number of characters to show in each result excerpt/snippet, except for instant answers. Leave blank for no trimming.', 'raffle-search' ); ?>
+    <?php esc_html_e( 'Maximum number of characters to show in each result excerpt/snippet, except for instant answers. Leave blank for no trimming.', 'kp-search-with-raffle' ); ?>
 </p>
 <?php
 }
@@ -909,7 +911,7 @@ function raffle_search_field_instant_answer_excerpt_trim_length() {
     name="raffle_search_instant_answer_excerpt_trim_length" value="<?php echo esc_attr( $value ); ?>" class="small-text"
     min="1" placeholder="None" />
 <p class="description">
-    <?php esc_html_e( 'Maximum number of characters to show in instant answer excerpts/snippets (type: instant_answer). Leave blank for no trimming.', 'raffle-search' ); ?>
+    <?php esc_html_e( 'Maximum number of characters to show in instant answer excerpts/snippets (type: instant_answer). Leave blank for no trimming.', 'kp-search-with-raffle' ); ?>
 </p>
 <?php
 }
@@ -925,76 +927,22 @@ function raffle_search_render_settings_page() {
 <div class="wrap">
     <div style="margin-bottom: 24px; display: flex; align-items: center; gap: 24px;">
         <div style="height: 64px; width: 64px; background: #12151f; border-radius: 8px;">
-            <svg id="icon" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 500 500">
-                <!-- Generator: Adobe Illustrator 30.2.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 1)  -->
+            <svg xmlns="http://www.w3.org/2000/svg" id="icon" viewBox="0 0 500 500">
                 <defs>
                     <style>
-                    .st0 {
-                        fill: #fff;
-                    }
-
                     .st1 {
-                        fill: #12151f;
+                        fill: #e7f76e;
+                        fill-rule: evenodd
                     }
                     </style>
                 </defs>
-                <rect id="bg" class="st1" width="500" height="500" />
-                <g id="txt">
-                    <g>
-                        <path class="st0"
-                            d="M175.3,182.3h-.3s-17.7,2.7-17.7,2.7h-.7c-2.8.6-5.3,1.4-7.7,2.3-2.6,1.1-4.8,2.5-6.8,4.4s-3.5,4-4.6,6.5-1.7,5.3-1.7,8.6.6,5.5,1.7,8.1c1.1,2.6,2.7,4.9,4.9,6.9,2.1,2,4.7,3.6,7.8,4.8,3.1,1.2,6.5,1.8,10.3,1.8s9.8-1.1,13.2-3.2c3.5-2.1,6.1-4.6,8-7.5,0,1.4,0,2.9.2,4.6.1,1.6.3,2.8.5,3.8v.2h17.9v-.3c-.2-1.2-.4-2.9-.6-4.9-.2-1.9-.3-3.8-.3-5.5v-.7s0-35.5,0-35.5v-.6c0-3.4-.6-6.6-1.7-9.8-1.1-3.3-2.9-6.2-5.4-8.7-2.5-2.5-5.7-4.5-9.7-6s-8.8-2.3-14.5-2.3-9.1.7-12.8,2.1c-1.4.5-2.8,1.2-4,1.8l9.2,13.6c2.1-1.3,4.7-1.9,7.8-1.9s7.1.9,9.1,2.8c2,1.9,3,4.1,3,6.6s-.4,2.4-1.2,3.3c-.7.9-2.1,1.5-3.9,1.8ZM180.4,197.3v.5c0,3-.5,5.5-1.3,7.5-.9,2.1-2,3.8-3.5,5.1-1.5,1.3-3.1,2.2-5,2.8-1.9.5-3.9.8-5.9.8-3.1,0-5.4-.9-7-2.6-1.6-1.7-2.3-3.6-2.3-5.8s.9-5,2.6-6.4,3.8-2.3,6.3-2.7l16.2-3v3.7Z" />
-                        <path class="st0"
-                            d="M222.8,126.7c-2.3,2.3-4,5.2-5.3,8.4-1.2,3.3-1.8,7-1.8,11.1v8.2h-12v16.7h12v55.4h19.6v-55.4h27.7v55.4h19.4v-55.4h29.2v23.2h0v6.6c0,7.8,2.4,14.1,6.9,18.7l.3.3c4.7,4.7,10.9,7.1,18.7,7.1s3.9-.1,5.7-.4c1.8-.3,4.4-1,5.2-1.4-2.2-4.1-3.7-6.9-4.6-8.4-2.2-4-3.4-6.3-3.7-6.8-1.1.1-2,.1-2.5,0-.8-.2-2.2-.8-3.3-1.5s-1.8-1.7-2.5-2.9c-.6-1.2-.9-2.8-.9-4.8h0v-80.2h-19.4v34h-29.2v-8.3c0-1.9.4-3.4.9-4.6.6-1.3,1.5-2.3,2.5-3,1-.7,2.1-1.2,3.3-1.5,1.2-.3,2.3-.4,3.4-.4,1.7,0,3,0,3.9.2,1,.1,1.7.3,2.2.5v-16.4h-.2c-.8-.4-2-.8-3.7-1-1.8-.3-3.7-.4-5.8-.4-7.9,0-14.2,2.4-18.9,7.3-4.7,4.8-7.1,11.4-7.1,19.6v8.2h-27.7v-8.3c0-1.9.4-3.4.9-4.6.6-1.3,1.5-2.3,2.5-3,1-.7,2.1-1.2,3.3-1.5,1.2-.3,2.3-.4,3.4-.4,1.7,0,3,0,3.9.2,1,.1,1.7.3,2.2.5v-16.4h-.2c-.8-.4-2-.8-3.7-1-1.8-.3-3.7-.4-5.8-.4-4,0-7.6.6-10.8,1.9-3.2,1.3-6,3.1-8.2,5.4Z" />
-                        <path class="st0"
-                            d="M378.5,152.2c-4.6,0-9,.9-13.3,2.7-4.3,1.8-8.1,4.3-11.3,7.6-3.3,3.3-5.9,7.3-7.8,11.9-1.9,4.7-2.9,9.9-2.9,15.7s1,11.5,3,16.3c2,4.8,4.7,8.8,8.1,12.2,3.4,3.3,7.3,5.8,11.8,7.5,4.5,1.7,9.2,2.6,14.2,2.6s8.4-.6,12-1.8c.6-.2,1.1-.4,1.6-.6l-8.5-14.8c-1.5.3-3.2.5-5,.5s-4.7-.4-6.9-1.2c-2.1-.8-4-2-5.6-3.4-1.6-1.5-2.9-3.2-3.9-5.2-1-2-1.6-4.2-1.7-6.5h51.4c0-.3,0-1,.1-2.1,0-1.2.1-2.5.1-3.9,0-11.6-3.1-20.8-9.3-27.4-6.2-6.6-14.9-10-26.1-10ZM362.7,182.2v-.4c.2-1.5.6-3,1.2-4.6.7-1.7,1.8-3.2,3.1-4.5,1.4-1.4,3-2.5,5-3.4,1.9-.9,4.2-1.3,6.7-1.3s5.1.4,7.1,1.2c2,.8,3.7,1.9,5,3.2,1.3,1.3,2.3,2.8,2.9,4.5.6,1.7,1,3.4,1.1,5.2h-32.1Z" />
-                        <path class="st0"
-                            d="M106.1,186.6v-.5c.2-8.2,4.3-13.1,12.1-13.1s10.1,2.7,13.2,9.4l18.2-8.4-.3-.7c-6.3-13.2-17.1-20.5-31-20.5-19.9,0-32.2,14.8-32.2,33.7v40.3h20v-40.3Z" />
-                        <path class="st0" d="M406.2,214.9c0-3.3-2.7-6-6-6s-6,2.7-6,6,2.7,6,6,6,6-2.7,6-6Z" />
-                    </g>
-                    <g>
-                        <path class="st0"
-                            d="M131,264.1c-.7-3.8-2.5-6.8-5.5-9-3-2.2-6.8-3.3-11.4-3.3s-8.9,1.2-11.9,3.5c-3,2.3-4.5,5.4-4.5,9.1s1.1,5.5,3.3,7.5c2.2,2,5.8,3.7,10.9,5.1l7.8,2.1c7.3,1.9,12.7,4.5,16.2,7.7,3.6,3.2,5.3,7.5,5.3,12.8s-1,7.5-2.9,11c-1.9,3.5-4.9,6.3-9,8.5-4.1,2.2-9.3,3.3-15.8,3.3s-9.9-.9-13.9-2.7-7.2-4.3-9.6-7.5c-2.4-3.2-3.7-7-4-11.4h9.6c.5,4.2,2.6,7.4,6.1,9.6,3.6,2.2,7.8,3.3,12.7,3.3s9.4-1.2,12.6-3.7c3.2-2.5,4.8-5.7,4.8-9.6s-1.2-5.8-3.6-7.8c-2.4-2-6.2-3.7-11.4-5.2l-9.4-2.7c-6-1.7-10.7-4.2-14.2-7.4-3.4-3.2-5.2-7.4-5.2-12.5s1.2-8,3.5-11.2c2.3-3.2,5.5-5.7,9.4-7.5,4-1.8,8.4-2.7,13.3-2.7s9.3.9,13.1,2.7c3.8,1.8,6.8,4.2,9.1,7.4,2.2,3.1,3.5,6.7,3.7,10.8h-9.3Z" />
-                        <path class="st0"
-                            d="M178.8,322.2c-5.8,0-10.7-1.3-14.7-3.9-4-2.6-6.9-6.1-8.9-10.6s-3-9.6-3-15.3,1-10.8,3.1-15.2c2-4.5,5-8,8.8-10.6,3.9-2.6,8.5-3.9,14-3.9s8.6,1,12.5,2.9c4,1.9,7.2,5,9.7,9.3,2.5,4.3,3.7,9.9,3.7,17v3.7h-42.8c.5,6.2,2.4,10.8,5.6,13.9,3.2,3.1,7.1,4.6,11.7,4.6s6.8-.8,9.7-2.5c3-1.7,5.1-3.9,6.5-6.6l7.9,3.4c-1.7,4.1-4.7,7.4-8.9,9.9-4.2,2.5-9.2,3.7-14.9,3.7ZM178.3,270.7c-4.8,0-8.7,1.5-11.7,4.5-3,3-4.8,7.3-5.4,12.8h34.1c0-3.2-.7-6.2-2-8.8-1.4-2.6-3.3-4.7-5.8-6.3s-5.5-2.3-9-2.3Z" />
-                        <path class="st0"
-                            d="M251.1,321v-7.8h-.4c-.6,1.2-1.6,2.6-3,4-1.4,1.4-3.3,2.6-5.6,3.6-2.3,1-5.2,1.5-8.5,1.5s-7-.7-9.9-2.1c-3-1.4-5.3-3.3-7.1-5.9-1.7-2.6-2.6-5.7-2.6-9.2s.9-6.7,2.6-9c1.7-2.4,4-4.3,6.7-5.7,2.8-1.4,5.7-2.5,8.8-3.2,3.1-.7,6.1-1.2,9-1.6,2.9-.3,5.3-.6,7.3-.8l2.7-.3v-.7c0-4.1-1.3-7.4-3.8-9.8-2.5-2.4-5.9-3.6-10.2-3.6-6.7,0-11.5,3.1-14.2,9.4l-8.2-3.1c1.1-3.1,2.7-5.6,4.5-7.4,1.9-1.9,3.9-3.3,6-4.2,2.1-1,4.2-1.6,6.3-1.9,2.1-.3,3.9-.5,5.4-.5,3.9,0,7.6.7,11.1,2.2,3.5,1.4,6.3,3.8,8.5,7.2s3.3,7.8,3.3,13.4v35.5h-8.8ZM251.1,292.4h-1.8c-1.2.2-2.8.4-4.9.5-2.1.1-4.4.4-6.9.8-2.5.4-4.8,1.1-7.1,1.9-2.2.9-4.1,2.1-5.5,3.6-1.4,1.5-2.1,3.5-2.1,5.9s1.1,5.2,3.3,6.8c2.2,1.6,4.7,2.5,7.7,2.5s7.1-.7,9.6-2.1c2.6-1.4,4.5-3.1,5.8-5.3,1.3-2.2,1.9-4.5,1.9-6.9v-7.8Z" />
-                        <path class="st0"
-                            d="M304.4,262.9v9.1c-.4,0-1.1-.1-1.8-.2-.8,0-1.7,0-2.8,0-3.2,0-5.9.8-8.2,2.5s-4,3.8-5.3,6.3-1.9,5-1.9,7.5v32.9h-8.8v-57.5h8.8v9.9h.6c.5-1.8,1.6-3.6,3.1-5.2,1.5-1.6,3.4-3,5.5-4,2.1-1,4.3-1.5,6.5-1.5s3.5,0,4.3.3Z" />
-                        <path class="st0"
-                            d="M359.4,280.8h-8.8c-.7-2.8-2.3-5.1-4.7-7.1-2.4-2-5.6-2.9-9.5-2.9s-6.3.9-8.8,2.8c-2.5,1.8-4.5,4.4-5.9,7.6-1.4,3.2-2.1,7-2.1,11.2s.7,8.2,2.2,11.5c1.4,3.3,3.4,5.9,5.9,7.7,2.5,1.8,5.4,2.8,8.6,2.8s6.9-.9,9.4-2.7c2.5-1.8,4.2-4.2,5-7.4h8.8c-.5,3.4-1.7,6.4-3.7,9.2-2,2.7-4.6,4.9-7.9,6.4-3.3,1.6-7.2,2.4-11.6,2.4s-9.6-1.3-13.4-3.8c-3.8-2.5-6.8-6.1-8.9-10.6-2.1-4.5-3.1-9.7-3.1-15.6s1-10.8,3.1-15.3,5-7.9,8.8-10.4c3.8-2.5,8.3-3.8,13.5-3.8s7.7.7,11,2.2c3.3,1.5,6.1,3.6,8.2,6.3s3.5,5.8,4,9.4Z" />
-                        <path class="st0"
-                            d="M380.5,286.3v34.7h-8.8v-76.7h8.8v27.3h.6c1.4-2.2,3.5-4.2,6.3-6,2.8-1.9,6.4-2.8,10.7-2.8s9.8,1.8,13.3,5.5c3.5,3.7,5.2,9.1,5.2,16.2v36.5h-8.8v-36.5c0-4.2-1.1-7.4-3.4-9.7-2.3-2.3-5.3-3.4-9.2-3.4s-4.7.5-6.9,1.5c-2.3,1-4.2,2.6-5.7,4.8-1.5,2.2-2.2,5.1-2.2,8.7Z" />
-                    </g>
-                    <g>
-                        <path class="st0"
-                            d="M111.9,356.3v3.4c0,2.3-.5,4.4-1.5,6.3-1,1.9-2.4,3.4-4.2,4.5-1.8,1.1-4.1,1.7-6.6,1.7s-4.7-.6-6.7-1.8c-2-1.2-3.5-3-4.7-5.4s-1.7-5.4-1.7-8.9.6-6.5,1.7-8.9c1.1-2.4,2.7-4.2,4.7-5.4,2-1.2,4.2-1.8,6.7-1.8s4.2.4,6,1.3c1.7.9,3.1,2,4.2,3.5,1.1,1.5,1.7,3.1,2,4.8h-4c-.2-1-.6-2-1.3-3s-1.6-1.7-2.8-2.4c-1.2-.6-2.5-.9-4.1-.9-2.8,0-5,1.1-6.7,3.3-1.7,2.2-2.6,5.3-2.6,9.4s.3,4.6.8,6.2c.6,1.6,1.3,2.9,2.2,3.8.9.9,1.9,1.6,3,1.9,1.1.4,2.1.6,3.2.6s2.7-.3,4-.9c1.3-.6,2.4-1.5,3.3-2.9.9-1.3,1.3-3.1,1.3-5.3h-7.4v-3.4h11.3Z" />
-                        <path class="st0"
-                            d="M132.9,362.6v-14.2h3.6v23.5h-3.6v-3.3h-.2c-.6.9-1.4,1.7-2.6,2.5s-2.6,1.1-4.4,1.1-2.3-.3-3.5-.9c-1.2-.6-2.1-1.6-2.9-2.9-.8-1.3-1.2-3-1.2-5v-14.9h3.6v14.9c0,1.7.5,3,1.4,4s2.2,1.4,3.7,1.4,1.8-.2,2.7-.6,1.7-1.1,2.4-2c.6-.9,1-2.1,1-3.5Z" />
-                        <path class="st0"
-                            d="M153,348.4v3.4h-5v13.4c0,1.1.2,2,.6,2.4.4.5.9.8,1.5.9s1.1.2,1.5.2.5,0,.7,0c.2,0,.4,0,.7,0v3.3c-.3,0-.6.2-.8.2s-.7,0-1.5,0-1.9-.2-2.9-.6c-1-.4-1.8-1.1-2.5-1.9-.7-.9-1-2-1-3.4v-14.4h-3.8v-3.4h3.8v-5h3.6v5h5Z" />
-                        <path class="st0"
-                            d="M167.5,372.3c-2.4,0-4.4-.5-6-1.6s-2.8-2.5-3.7-4.3-1.2-3.9-1.2-6.2.4-4.4,1.2-6.2c.8-1.8,2-3.3,3.6-4.3,1.6-1.1,3.5-1.6,5.7-1.6s3.5.4,5.1,1.2c1.6.8,2.9,2.1,3.9,3.8,1,1.7,1.5,4.1,1.5,6.9v1.5h-17.5c.2,2.5,1,4.4,2.3,5.7,1.3,1.3,2.9,1.9,4.8,1.9s2.8-.3,4-1c1.2-.7,2.1-1.6,2.6-2.7l3.2,1.4c-.7,1.7-1.9,3-3.6,4-1.7,1-3.7,1.5-6.1,1.5ZM167.3,351.3c-2,0-3.6.6-4.8,1.9s-2,3-2.2,5.2h13.9c0-1.3-.3-2.5-.8-3.6-.6-1.1-1.4-1.9-2.4-2.6s-2.3-.9-3.7-.9Z" />
-                        <path class="st0"
-                            d="M186.5,358v13.9h-3.6v-23.5h3.6v4h.2c.6-1.2,1.4-2.2,2.6-3,1.2-.8,2.6-1.2,4.4-1.2s4,.7,5.4,2.2c1.4,1.5,2.1,3.7,2.1,6.7v14.9h-3.6v-14.7c0-1.7-.5-3.1-1.4-4.1-1-1-2.2-1.5-3.7-1.5s-1.8.2-2.7.7-1.7,1.2-2.4,2.1c-.6.9-1,2.2-1,3.6Z" />
-                        <path class="st0"
-                            d="M207.7,340.6h3.6v10.8h.4c.6-.9,1.4-1.7,2.5-2.3,1.1-.6,2.4-.9,4-.9s3.9.5,5.5,1.5c1.6,1,2.8,2.4,3.7,4.2.9,1.8,1.3,3.9,1.3,6.4s-.4,4.6-1.3,6.4c-.9,1.8-2.1,3.3-3.7,4.3-1.6,1-3.4,1.5-5.5,1.5s-3.1-.3-4.1-1c-1.1-.7-1.9-1.4-2.5-2.4h-.4l-.2,2.9h-3.3v-31.3ZM211.5,364c.2,1,.7,1.9,1.4,2.7s1.5,1.4,2.4,1.8c.9.4,1.9.6,2.9.6s2.5-.4,3.5-1.1c1-.7,1.8-1.8,2.4-3.1.6-1.3.9-2.9.9-4.7,0-2.7-.7-4.9-2-6.4-1.3-1.6-3-2.4-4.9-2.4s-2.9.5-4.1,1.4c-1.2.9-2,2.1-2.5,3.5-.2.8-.4,1.6-.4,2.3s0,1.3,0,1.6,0,.9,0,1.6c0,.8.2,1.5.4,2.3Z" />
-                        <path class="st0"
-                            d="M243.7,372.3c-2.4,0-4.4-.5-6-1.6s-2.8-2.5-3.7-4.3-1.2-3.9-1.2-6.2.4-4.4,1.2-6.2c.8-1.8,2-3.3,3.6-4.3,1.6-1.1,3.5-1.6,5.7-1.6s3.5.4,5.1,1.2,2.9,2.1,3.9,3.8c1,1.7,1.5,4.1,1.5,6.9v1.5h-17.5c.2,2.5,1,4.4,2.3,5.7,1.3,1.3,2.9,1.9,4.8,1.9s2.8-.3,4-1c1.2-.7,2.1-1.6,2.6-2.7l3.2,1.4c-.7,1.7-1.9,3-3.6,4-1.7,1-3.7,1.5-6.1,1.5ZM243.5,351.3c-2,0-3.6.6-4.8,1.9-1.2,1.2-2,3-2.2,5.2h13.9c0-1.3-.3-2.5-.8-3.6-.6-1.1-1.4-1.9-2.4-2.6-1-.6-2.3-.9-3.7-.9Z" />
-                        <path class="st0"
-                            d="M271,348.1v3.7c-.2,0-.4,0-.7,0-.3,0-.7,0-1.2,0-1.3,0-2.4.3-3.4,1s-1.7,1.5-2.2,2.6c-.5,1-.8,2-.8,3.1v13.4h-3.6v-23.5h3.6v4h.2c.2-.8.7-1.5,1.3-2.1.6-.7,1.4-1.2,2.2-1.6.9-.4,1.7-.6,2.7-.6s1.4,0,1.8.1Z" />
-                        <path class="st0"
-                            d="M290.9,348.5h3.6v23.8c0,1.8-.5,3.2-1.4,4.5-.9,1.2-2.2,2.2-3.7,2.8-1.6.7-3.3,1-5.2,1s-3-.2-4.2-.6c-1.2-.4-2.1-.9-2.9-1.6-.8-.6-1.4-1.3-1.9-2l2.7-2.1c.3.3.7.7,1.2,1.2.5.5,1.2.9,2,1.3.8.4,1.9.6,3.2.6,2,0,3.5-.5,4.8-1.4,1.2-.9,1.9-2.4,1.9-4.5v-2.8h-.4c-.6.9-1.4,1.6-2.5,2.2-1,.6-2.3.9-3.9.9s-3.9-.5-5.5-1.5-2.8-2.3-3.7-4.1-1.3-3.9-1.3-6.4.4-4.4,1.3-6.2c.9-1.8,2.1-3.1,3.7-4.1,1.6-1,3.4-1.5,5.6-1.5s3,.3,4,.9c1,.6,1.9,1.3,2.5,2.2h.3v-2.6ZM277.1,359.9c0,2.8.7,4.9,2,6.4,1.3,1.5,3,2.3,5,2.3s1.9-.2,2.8-.6,1.7-1,2.4-1.7c.7-.7,1.1-1.6,1.4-2.6.2-.7.3-1.4.4-2.2,0-.8,0-1.3,0-1.6s0-.8,0-1.4-.2-1.4-.4-2.2c-.4-1.4-1.2-2.5-2.4-3.4s-2.5-1.4-4.1-1.4-3.7.8-5.1,2.3-2,3.6-2,6.3Z" />
-                        <path class="st0"
-                            d="M323.9,371.9h-10.8v-31.3h10.3c2.1,0,3.9.4,5.3,1.2,1.5.8,2.6,1.8,3.4,3.1.8,1.3,1.2,2.6,1.2,4.1s-.4,2.9-1.2,4.1c-.8,1.3-1.9,2.2-3.3,2.9,1.8.4,3.2,1.2,4.2,2.4s1.6,2.7,1.6,4.6-.5,3.5-1.4,4.8c-.9,1.3-2.2,2.3-3.7,3s-3.4,1-5.5,1ZM316.9,343.9v10.5h7.3c1-.2,1.9-.5,2.7-1,.8-.5,1.4-1.2,1.9-1.9.5-.8.7-1.6.7-2.5s-.2-1.6-.7-2.4-1.1-1.4-2-1.9c-.9-.5-2-.7-3.4-.7h-6.5ZM330.7,363c0-1.8-.6-3.1-1.8-4-1.2-.9-2.8-1.3-4.8-1.3h-7.2v10.8h7c1.2,0,2.4-.2,3.4-.6,1-.4,1.9-1,2.5-1.8s.9-1.9.9-3.2Z" />
-                        <path class="st0" d="M343.6,340.6v31.3h-3.6v-31.3h3.6Z" />
-                        <path class="st0"
-                            d="M359.4,372.3c-2.2,0-4.1-.5-5.6-1.6-1.6-1-2.8-2.5-3.6-4.3s-1.3-4-1.3-6.4.4-4.4,1.3-6.2c.8-1.8,2.1-3.2,3.6-4.3s3.4-1.6,5.6-1.6c3.3,0,6,1.1,7.9,3.2,1.9,2.2,2.9,5.1,2.9,8.8s-.4,4.7-1.3,6.5-2.1,3.2-3.7,4.2c-1.6,1-3.5,1.5-5.7,1.5ZM359.4,369.1c2.2,0,3.9-.8,5.2-2.4s1.9-3.8,1.9-6.6-.6-4.9-1.9-6.5c-1.3-1.5-3-2.3-5.2-2.3s-2.6.4-3.7,1.1c-1,.8-1.8,1.8-2.4,3.1-.6,1.3-.8,2.8-.8,4.5s.3,3.2.8,4.5,1.3,2.4,2.3,3.2c1,.8,2.3,1.2,3.8,1.2Z" />
-                        <path class="st0"
-                            d="M394.1,355.4h-3.6c-.3-1.1-.9-2.1-1.9-2.9-1-.8-2.3-1.2-3.9-1.2s-2.6.4-3.6,1.1c-1,.8-1.8,1.8-2.4,3.1-.6,1.3-.9,2.8-.9,4.6s.3,3.4.9,4.7c.6,1.3,1.4,2.4,2.4,3.1s2.2,1.1,3.5,1.1,2.8-.4,3.8-1.1,1.7-1.7,2-3h3.6c-.2,1.4-.7,2.6-1.5,3.7-.8,1.1-1.9,2-3.2,2.6-1.3.6-2.9,1-4.7,1s-3.9-.5-5.5-1.6c-1.6-1-2.8-2.5-3.6-4.3-.9-1.8-1.3-4-1.3-6.4s.4-4.4,1.3-6.2c.9-1.8,2.1-3.2,3.6-4.3s3.4-1.5,5.5-1.5,3.2.3,4.5.9c1.4.6,2.5,1.5,3.3,2.6.9,1.1,1.4,2.4,1.6,3.9Z" />
-                        <path class="st0"
-                            d="M413.8,371.9l-8.3-10.8-2.8,3v7.8h-3.6v-31.3h3.6v18.4h.3l9.5-10.6h4.6l-9.2,10,10.2,13.4h-4.3Z" />
-                    </g>
-                </g>
+                <path id="bg" d="M0 0h500v500H0z" style="fill:#12151f" />
+                <path
+                    d="M337.4 226.4c-4.9-2.8-10-4.9-15.3-6.5l-18 18c21.6 4.8 34.4 20.2 34.4 49.5s-21 53.8-47.1 53.8-12 0-25.3-1.8V276l-26.5 26.6v113.9h26.5v-56.7c13.9 1.8 21.3 2.2 27.2 2.2 15.2 0 30-3.2 45-12.2 19.7-12.2 28.7-36.5 28.7-62.2s-6.6-47.1-29.5-61M222.8 313.5l-35.3-36 70.6-59.7h-35.5l-63.7 58.7V158.1h-25.8v199h25.8v-73.2l45.4 48.1z"
+                    class="st1" />
+                <path
+                    d="m301.1 199-29.5-29.5c-.2-.2-.5-.4-.8-.6 7-9 11.2-20.3 11.2-32.5 0-29.3-23.8-53.1-53.1-53.1s-53.1 23.8-53.1 53.1 23.8 53.1 53.1 53.1 23.5-4.2 32.5-11.2c.2.3.4.5.6.8l29.5 29.5c1.3 1.3 3 2 4.8 2s3.5-.7 4.8-2c2.6-2.6 2.6-6.9 0-9.5ZM229 176c-21.8 0-39.6-17.8-39.6-39.6s17.8-39.6 39.6-39.6 39.6 17.8 39.6 39.6S250.8 176 229 176"
+                    style="fill:#fff" />
             </svg>
         </div>
         <h1 style="margin: 0; padding: 0;"><?php echo esc_html( get_admin_page_title() ); ?></h1>
@@ -1002,80 +950,82 @@ function raffle_search_render_settings_page() {
 
     <h2 class="nav-tab-wrapper" id="raffle-tab-nav">
         <a href="#tab-general" class="nav-tab nav-tab-active"
-            data-tab="tab-general"><?php esc_html_e( 'General', 'raffle-search' ); ?></a>
+            data-tab="tab-general"><?php esc_html_e( 'General', 'kp-search-with-raffle' ); ?></a>
         <a href="#tab-metadata" class="nav-tab"
-            data-tab="tab-metadata"><?php esc_html_e( 'Metadata', 'raffle-search' ); ?></a>
+            data-tab="tab-metadata"><?php esc_html_e( 'Metadata', 'kp-search-with-raffle' ); ?></a>
         <a href="#tab-settings" class="nav-tab"
-            data-tab="tab-settings"><?php esc_html_e( 'Settings', 'raffle-search' ); ?></a>
+            data-tab="tab-settings"><?php esc_html_e( 'Settings', 'kp-search-with-raffle' ); ?></a>
         <a href="#tab-design" class="nav-tab"
-            data-tab="tab-design"><?php esc_html_e( 'Design', 'raffle-search' ); ?></a>
+            data-tab="tab-design"><?php esc_html_e( 'Design', 'kp-search-with-raffle' ); ?></a>
         <a href="#tab-shortcodes" class="nav-tab"
-            data-tab="tab-shortcodes"><?php esc_html_e( 'Shortcodes', 'raffle-search' ); ?></a>
-        <a href="#tab-about" class="nav-tab" data-tab="tab-about"><?php esc_html_e( 'About', 'raffle-search' ); ?></a>
+            data-tab="tab-shortcodes"><?php esc_html_e( 'Shortcodes', 'kp-search-with-raffle' ); ?></a>
+        <a href="#tab-about" class="nav-tab"
+            data-tab="tab-about"><?php esc_html_e( 'About', 'kp-search-with-raffle' ); ?></a>
     </h2>
 
     <form method="post" action="options.php">
         <?php settings_fields( 'raffle_search_options' ); ?>
 
         <div id="tab-general" class="raffle-tab-panel">
-            <?php do_settings_sections( 'raffle-search-general' ); ?>
+            <?php do_settings_sections( 'kp-search-with-raffle-general' ); ?>
         </div>
 
         <div id="tab-metadata" class="raffle-tab-panel" style="display:none;">
-            <?php do_settings_sections( 'raffle-search-metadata' ); ?>
+            <?php do_settings_sections( 'kp-search-with-raffle-metadata' ); ?>
         </div>
 
         <div id="tab-settings" class="raffle-tab-panel" style="display:none;">
-            <?php do_settings_sections( 'raffle-search-vis-settings' ); ?>
+            <?php do_settings_sections( 'kp-search-with-raffle-vis-settings' ); ?>
         </div>
 
         <div id="tab-design" class="raffle-tab-panel" style="display:none;">
-            <?php do_settings_sections( 'raffle-search-design' ); ?>
+            <?php do_settings_sections( 'kp-search-with-raffle-design' ); ?>
         </div>
 
         <div id="tab-shortcodes" class="raffle-tab-panel" style="display:none;">
-            <h2><?php esc_html_e( 'Shortcodes', 'raffle-search' ); ?></h2>
-            <p><?php esc_html_e( 'You can use shortcodes to embed the Raffle Search blocks in templates, widgets, or any content area that does not support Gutenberg blocks.', 'raffle-search' ); ?>
+            <h2><?php esc_html_e( 'Shortcodes', 'kp-search-with-raffle' ); ?></h2>
+            <p><?php esc_html_e( 'You can use shortcodes to embed the Raffle Search blocks in templates, widgets, or any content area that does not support Gutenberg blocks.', 'kp-search-with-raffle' ); ?>
             </p>
 
             <table class="form-table" role="presentation">
                 <tr>
-                    <th scope="row"><?php esc_html_e( 'Raffle Search', 'raffle-search' ); ?></th>
+                    <th scope="row"><?php esc_html_e( 'Raffle Search', 'kp-search-with-raffle' ); ?></th>
                     <td>
-                        <p><?php esc_html_e( 'Renders the full Raffle Search experience.', 'raffle-search' ); ?></p>
+                        <p><?php esc_html_e( 'Renders the full Raffle Search experience.', 'kp-search-with-raffle' ); ?>
+                        </p>
                         <code>[raffle_search]</code>
                         <p class="description" style="margin-top:8px;">
-                            <?php esc_html_e( 'Optional attribute:', 'raffle-search' ); ?>
+                            <?php esc_html_e( 'Optional attribute:', 'kp-search-with-raffle' ); ?>
                             <code>uid</code> &mdash;
-                            <?php esc_html_e( 'Override the global Search UID for this instance.', 'raffle-search' ); ?>
+                            <?php esc_html_e( 'Override the global Search UID for this instance.', 'kp-search-with-raffle' ); ?>
                         </p>
                         <p style="margin-top:4px;">
-                            <?php esc_html_e( 'Example:', 'raffle-search' ); ?>
+                            <?php esc_html_e( 'Example:', 'kp-search-with-raffle' ); ?>
                             <code>[raffle_search uid="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]</code>
                         </p>
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row"><?php esc_html_e( 'Raffle Search Widget', 'raffle-search' ); ?></th>
+                    <th scope="row"><?php esc_html_e( 'KP Raffle Search Widget', 'kp-search-with-raffle' ); ?></th>
                     <td>
-                        <p><?php esc_html_e( 'Renders a magnifier icon that opens the search overlay or links to a search page.', 'raffle-search' ); ?>
+                        <p><?php esc_html_e( 'Renders a magnifier icon that opens the search overlay or links to a search page.', 'kp-search-with-raffle' ); ?>
                         </p>
                         <code>[raffle_search_widget]</code>
                         <p class="description" style="margin-top:8px;">
-                            <?php esc_html_e( 'Optional attributes:', 'raffle-search' ); ?>
+                            <?php esc_html_e( 'Optional attributes:', 'kp-search-with-raffle' ); ?>
                         </p>
                         <ul style="margin-top:4px;list-style:disc;padding-left:20px;">
                             <li>
                                 <code>mode</code> &mdash;
-                                <?php esc_html_e( '"overlay" (default) or "link".', 'raffle-search' ); ?>
+                                <?php esc_html_e( '"overlay" (default) or "link".', 'kp-search-with-raffle' ); ?>
                             </li>
                             <li>
                                 <code>url</code> &mdash;
-                                <?php esc_html_e( 'The search page URL (used when mode="link").', 'raffle-search' ); ?>
+                                <?php esc_html_e( 'The search page URL (used when mode="link").', 'kp-search-with-raffle' ); ?>
                             </li>
                         </ul>
                         <p style="margin-top:4px;">
-                            <?php esc_html_e( 'Examples:', 'raffle-search' ); ?><br>
+                            <?php esc_html_e( 'Examples:', 'kp-search-with-raffle' ); ?><br>
                             <code>[raffle_search_widget]</code><br>
                             <code>[raffle_search_widget mode="link" url="https://example.com/search"]</code>
                         </p>
@@ -1085,58 +1035,58 @@ function raffle_search_render_settings_page() {
         </div>
 
         <div id="tab-about" class="raffle-tab-panel" style="display:none;">
-            <h2><?php esc_html_e( 'About this plugin', 'raffle-search' ); ?></h2>
+            <h2><?php esc_html_e( 'About this plugin', 'kp-search-with-raffle' ); ?></h2>
             <table class="form-table" role="presentation">
                 <tr>
-                    <th scope="row"><?php esc_html_e( 'Version', 'raffle-search' ); ?></th>
+                    <th scope="row"><?php esc_html_e( 'Version', 'kp-search-with-raffle' ); ?></th>
                     <td>
-                        <p><?php echo esc_html( RAFFLE_SEARCH_VERSION ); ?></p>
+                        <p><?php echo esc_html( KP_SEARCH_WITH_RAFFLE_VERSION ); ?></p>
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row"><?php esc_html_e( 'Author', 'raffle-search' ); ?></th>
+                    <th scope="row"><?php esc_html_e( 'Author', 'kp-search-with-raffle' ); ?></th>
                     <td>
-                        <p><?php esc_html_e( 'This plugin is built and maintained by', 'raffle-search' ); ?>
+                        <p><?php esc_html_e( 'This plugin is built and maintained by', 'kp-search-with-raffle' ); ?>
                             <a href="https://klausenogpartners.dk/" target="_blank" rel="noopener noreferrer">Klausen og
                                 Partners</a>.
                         </p>
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row"><?php esc_html_e( 'Source code', 'raffle-search' ); ?></th>
+                    <th scope="row"><?php esc_html_e( 'Source code', 'kp-search-with-raffle' ); ?></th>
                     <td>
-                        <p><a href="https://github.com/klausen-partners/raffle-search-wp-gutenberg-block"
+                        <p><a href="https://github.com/klausen-partners/kp-search-with-raffle"
                                 target="_blank"
-                                rel="noopener noreferrer">github.com/klausen-partners/raffle-search-wp-gutenberg-block</a>
+                                rel="noopener noreferrer">github.com/klausen-partners/kp-search-with-raffle</a>
                         </p>
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row"><?php esc_html_e( 'Feature requests &amp; bugs', 'raffle-search' ); ?></th>
+                    <th scope="row"><?php esc_html_e( 'Feature requests &amp; bugs', 'kp-search-with-raffle' ); ?></th>
                     <td>
-                        <p><?php esc_html_e( 'Found a bug or have a feature request? Please open an issue on GitHub:', 'raffle-search' ); ?><br>
-                            <a href="https://github.com/klausen-partners/raffle-search-wp-gutenberg-block/issues"
+                        <p><?php esc_html_e( 'Found a bug or have a feature request? Please open an issue on GitHub:', 'kp-search-with-raffle' ); ?><br>
+                            <a href="https://github.com/klausen-partners/kp-search-with-raffle/issues"
                                 target="_blank"
-                                rel="noopener noreferrer">github.com/klausen-partners/raffle-search-wp-gutenberg-block/issues</a>
+                                rel="noopener noreferrer">github.com/klausen-partners/kp-search-with-raffle/issues</a>
                         </p>
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row"><?php esc_html_e( 'Powered by Raffle', 'raffle-search' ); ?></th>
+                    <th scope="row"><?php esc_html_e( 'Powered by Raffle', 'kp-search-with-raffle' ); ?></th>
                     <td>
-                        <p><?php esc_html_e( 'Thanks to', 'raffle-search' ); ?>
+                        <p><?php esc_html_e( 'Thanks to', 'kp-search-with-raffle' ); ?>
                             <a href="https://business.raffle.ai/" target="_blank" rel="noopener noreferrer">Raffle</a>
-                            <?php esc_html_e( 'for providing the', 'raffle-search' ); ?>
+                            <?php esc_html_e( 'for providing the', 'kp-search-with-raffle' ); ?>
                             <a href="https://docs.raffle.ai/api/" target="_blank"
-                                rel="noopener noreferrer"><?php esc_html_e( 'API', 'raffle-search' ); ?></a>
-                            <?php esc_html_e( 'that was used to build this plugin.', 'raffle-search' ); ?>
+                                rel="noopener noreferrer"><?php esc_html_e( 'API', 'kp-search-with-raffle' ); ?></a>
+                            <?php esc_html_e( 'that was used to build this plugin.', 'kp-search-with-raffle' ); ?>
                         </p>
                     </td>
                 </tr>
             </table>
         </div>
 
-        <?php submit_button( __( 'Save Settings', 'raffle-search' ) ); ?>
+        <?php submit_button( __( 'Save Settings', 'kp-search-with-raffle' ) ); ?>
     </form>
 
     <hr style="margin: 32px 0;" />
@@ -1178,12 +1128,12 @@ jQuery(function($) {
 		    border-radius:8px;box-shadow:0 6px 24px rgba(0,0,0,.18);padding:16px 18px 14px;min-width:240px;">
     <button type="button" id="raffle-overlay-close" style="position:absolute;top:8px;right:10px;background:none;border:none;cursor:pointer;
 				   font-size:18px;line-height:1;color:#888;padding:2px 4px;"
-        aria-label="<?php esc_attr_e( 'Close', 'raffle-search' ); ?>">&times;</button>
+        aria-label="<?php esc_attr_e( 'Close', 'kp-search-with-raffle' ); ?>">&times;</button>
 
     <div id="raffle-overlay-swatches" style="display:none;margin-bottom:12px;">
         <p
             style="margin:0 0 6px;font-size:.75rem;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em;">
-            <?php esc_html_e( 'Theme Colors', 'raffle-search' ); ?>
+            <?php esc_html_e( 'Theme Colors', 'kp-search-with-raffle' ); ?>
         </p>
         <div id="raffle-overlay-swatches-list" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
         <hr style="margin:10px 0;border:none;border-top:1px solid #f0f0f0;">
@@ -1196,7 +1146,7 @@ jQuery(function($) {
     <div style="margin-top:8px;">
         <button type="button" id="raffle-overlay-reset"
             style="font-size:.8rem;color:#999;background:none;border:none;cursor:pointer;padding:0;text-decoration:underline;">
-            <?php esc_html_e( 'Reset to default', 'raffle-search' ); ?>
+            <?php esc_html_e( 'Reset to default', 'kp-search-with-raffle' ); ?>
         </button>
     </div>
 </div>
