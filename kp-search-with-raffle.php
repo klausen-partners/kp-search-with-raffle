@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name:       KP Search Integration with Raffle AI
- * Plugin URI:        https://raffle.ai
+ * Plugin URI:        https://kogp.dk
  * Description:       A Gutenberg block that integrates Raffle AI search (top questions, autocomplete, summary, and search results).
  * Version:           1.0.8
  * Requires at least: 6.1
