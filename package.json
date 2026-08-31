@@ -2,7 +2,7 @@
 	"name": "kp-search-with-raffle",
 	"version": "1.0.8",
 	"description": "KP Search Integration with Raffle AI",
-	"homepage": "https://kogp.dk",
+	"homepage": "https://klausenogpartners.dk/",
 	"author": "Klausen and Partners",
 	"repository": {
 		"type": "git",
@@ -14,13 +14,7 @@
 		"format": "wp-scripts format",
 		"lint:js": "wp-scripts lint-js",
 		"lint:js-fix": "wp-scripts lint-js --fix",
-		"zip": "wp-scripts plugin-zip",
-		"i18n:pot": "wp i18n make-pot . languages/kp-search-with-raffle.pot --domain=kp-search-with-raffle --exclude=node_modules,vendor,build",
-		"i18n:merge:en": "msgmerge --update --backup=off languages/kp-search-with-raffle.po languages/kp-search-with-raffle.pot",
-		"i18n:merge:da": "msgmerge --update --backup=off languages/kp-search-with-raffle-da_DK.po languages/kp-search-with-raffle.pot",
-		"i18n:mo": "msgfmt languages/kp-search-with-raffle.po -o languages/kp-search-with-raffle.mo && msgfmt languages/kp-search-with-raffle-da_DK.po -o languages/kp-search-with-raffle-da_DK.mo",
-		"i18n:json": "wp i18n make-json languages --no-purge",
-		"i18n:update": "npm run i18n:pot && npm run i18n:merge:en && npm run i18n:merge:da && npm run i18n:mo && npm run i18n:json"
+		"zip": "wp-scripts plugin-zip"
 	},
 	"dependencies": {
 		"react": "19.2.8",

@@ -19,11 +19,11 @@ if (! defined('ABSPATH')) {
 }
 
 define('KP_SEARCH_WITH_RAFFLE_VERSION', '1.0.8');
-define('KP_SEARCH_WITH_RAFFLE_DIR', WP_PLUGIN_DIR . '/' . dirname(plugin_basename(__FILE__)) . '/');
+define('KP_SEARCH_WITH_RAFFLE_DIR', plugin_dir_path(__FILE__));
 define('KP_SEARCH_WITH_RAFFLE_URL', plugins_url('/', __FILE__));
 
 // Admin settings page.
-require_once KP_SEARCH_WITH_RAFFLE_DIR . 'includes/admin.php';
+require_once __DIR__ . '/includes/admin.php';
 
 /**
  * Register the Gutenberg blocks.
@@ -43,58 +43,6 @@ function raffle_search_register_block()
 }
 add_action('init', 'raffle_search_register_block');
 
-/**
- * Pass plugin settings to the block's view script via wp_localize_script.
- */
-function raffle_search_localize_view_script()
-{
-    $handle = generate_block_asset_handle('kp-search-with-raffle/search', 'viewScript');
-
-    wp_localize_script(
-        $handle,
-        'raffleSettings',
-        array(
-            'baseUrl'        => get_option('raffle_search_base_url', 'https://api.raffle.ai/v2'),
-            'searchUid'      => get_option('raffle_search_uid', ''),
-            'showReferences' => (bool) get_option('raffle_search_show_references', true),
-            'hideSummaryButton' => (bool) get_option('raffle_search_hide_summary_button', false),
-            'hideExcerptTypes' => get_option('raffle_search_hide_excerpt_types', ''),
-            'excerptTrimLength' => get_option('raffle_search_excerpt_trim_length', null),
-            'instantAnswerExcerptTrimLength' => get_option('raffle_search_instant_answer_excerpt_trim_length', null),
-            'imageWidth'       => (int) get_option('raffle_search_image_width', 250),
-            'hiddenTags'       => get_option('raffle_search_hidden_tags', ''),
-            'tagsMode'         => get_option('raffle_search_tags_mode', 'exclude'),
-            'hiddenTypes'      => get_option('raffle_search_hidden_types', ''),
-            'typesMode'        => get_option('raffle_search_types_mode', 'exclude'),
-        )
-    );
-
-    wp_set_script_translations($handle, 'kp-search-with-raffle', KP_SEARCH_WITH_RAFFLE_DIR . 'languages');
-
-    // Also localize settings for the widget block's view script.
-    $widget_handle = generate_block_asset_handle('kp-search-with-raffle/widget', 'viewScript');
-    wp_localize_script(
-        $widget_handle,
-        'raffleSettings',
-        array(
-            'baseUrl'        => get_option('raffle_search_base_url', 'https://api.raffle.ai/v2'),
-            'searchUid'      => get_option('raffle_search_uid', ''),
-            'showReferences' => (bool) get_option('raffle_search_show_references', true),
-            'hideSummaryButton' => (bool) get_option('raffle_search_hide_summary_button', false),
-            'hideExcerptTypes' => get_option('raffle_search_hide_excerpt_types', ''),
-            'excerptTrimLength' => get_option('raffle_search_excerpt_trim_length', null),
-            'instantAnswerExcerptTrimLength' => get_option('raffle_search_instant_answer_excerpt_trim_length', null),
-            'imageWidth'       => (int) get_option('raffle_search_image_width', 250),
-            'hiddenTags'       => get_option('raffle_search_hidden_tags', ''),
-            'tagsMode'         => get_option('raffle_search_tags_mode', 'exclude'),
-            'hiddenTypes'      => get_option('raffle_search_hidden_types', ''),
-            'typesMode'        => get_option('raffle_search_types_mode', 'exclude'),
-        )
-    );
-    wp_set_script_translations($widget_handle, 'kp-search-with-raffle', KP_SEARCH_WITH_RAFFLE_DIR . 'languages');
-}
-add_action('enqueue_block_assets', 'raffle_search_localize_view_script');
-
 // Enqueue frontend script variable for default image
 add_action('wp_enqueue_scripts', function () {
     if (! is_admin()) {
@@ -105,7 +53,7 @@ add_action('wp_enqueue_scripts', function () {
         // Enqueue the view script if not already enqueued
         $handle = 'kp-search-with-raffle-view';
         if (! wp_script_is($handle, 'enqueued')) {
-            $asset = include KP_SEARCH_WITH_RAFFLE_DIR . 'build/view.asset.php';
+            $asset = include __DIR__ . '/build/view.asset.php';
             wp_enqueue_script(
                 $handle,
                 KP_SEARCH_WITH_RAFFLE_URL . 'build/view.js',
@@ -215,17 +163,15 @@ function raffle_search_register_shortcode_assets()
     }
 
     // Raffle Search (full block) shortcode assets.
-    $asset = include KP_SEARCH_WITH_RAFFLE_DIR . 'build/view.asset.php';
+    $asset = include __DIR__ . '/build/view.asset.php';
     wp_register_script('kp-search-with-raffle-shortcode-view', KP_SEARCH_WITH_RAFFLE_URL . 'build/view.js', $asset['dependencies'], $asset['version'], true);
     wp_localize_script('kp-search-with-raffle-shortcode-view', 'raffleSettings', raffle_search_get_settings_array());
-    wp_set_script_translations('kp-search-with-raffle-shortcode-view', 'kp-search-with-raffle', KP_SEARCH_WITH_RAFFLE_DIR . 'languages');
     wp_register_style('kp-search-with-raffle-shortcode-style', KP_SEARCH_WITH_RAFFLE_URL . 'build/style-view.css', array(), KP_SEARCH_WITH_RAFFLE_VERSION);
 
     // Raffle Search Widget shortcode assets.
-    $widget_asset = include KP_SEARCH_WITH_RAFFLE_DIR . 'build/widget/view.asset.php';
+    $widget_asset = include __DIR__ . '/build/widget/view.asset.php';
     wp_register_script('kp-search-with-raffle-widget-shortcode-view', KP_SEARCH_WITH_RAFFLE_URL . 'build/widget/view.js', $widget_asset['dependencies'], $widget_asset['version'], true);
     wp_localize_script('kp-search-with-raffle-widget-shortcode-view', 'raffleSettings', raffle_search_get_settings_array());
-    wp_set_script_translations('kp-search-with-raffle-widget-shortcode-view', 'kp-search-with-raffle', KP_SEARCH_WITH_RAFFLE_DIR . 'languages');
     wp_register_style('kp-search-with-raffle-widget-shortcode-style', KP_SEARCH_WITH_RAFFLE_URL . 'build/widget/style-view.css', array('kp-search-with-raffle-shortcode-style'), KP_SEARCH_WITH_RAFFLE_VERSION);
 }
 add_action('init', 'raffle_search_register_shortcode_assets');

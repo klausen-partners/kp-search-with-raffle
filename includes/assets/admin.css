@@ -1,0 +1,239 @@
+/**
+ * KP Raffle Search — settings screen styles.
+ *
+ * Enqueued via wp_enqueue_style() on the plugin settings page only.
+ * Colour values that depend on saved options are printed alongside this
+ * file with wp_add_inline_style(); see raffle_search_admin_color_css().
+ */
+
+/* ── Page header ───────────────────────────────────────────── */
+.raffle-admin-header {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	margin-bottom: 24px;
+}
+
+.raffle-admin-logo {
+	width: 64px;
+	height: 64px;
+	border-radius: 8px;
+	overflow: hidden;
+	background: #12151f;
+}
+
+.raffle-admin-logo img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.raffle-admin-title {
+	margin: 0;
+	padding: 0;
+}
+
+.raffle-admin-rule {
+	margin: 32px 0;
+}
+
+/* ── Tabs ──────────────────────────────────────────────────── */
+.raffle-tab-panel {
+	display: none;
+}
+
+.raffle-tab-panel.is-active {
+	display: block;
+}
+
+/* ── Generic field layout ──────────────────────────────────── */
+.raffle-field-row {
+	display: flex;
+	gap: 8px;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+.raffle-mode-select {
+	height: 30px;
+}
+
+.raffle-description--spaced {
+	margin-top: 8px;
+}
+
+.raffle-example {
+	margin-top: 4px;
+}
+
+.raffle-shortcode-attrs {
+	margin-top: 4px;
+	padding-left: 20px;
+	list-style: disc;
+}
+
+#raffle_search_uid_toggle {
+	margin-left: 8px;
+}
+
+/* ── Images ────────────────────────────────────────────────── */
+.raffle-image-preview {
+	display: block;
+	max-width: 100px;
+	max-height: 100px;
+	margin-bottom: 8px;
+}
+
+.raffle-metadata-sample {
+	max-width: 100%;
+	height: auto;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+/* ── Colour fields ─────────────────────────────────────────── */
+.raffle-color-pair {
+	display: flex;
+	gap: 1.5rem;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.raffle-color-pair--icon {
+	gap: 2rem;
+	align-items: flex-start;
+}
+
+.raffle-color-field {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.raffle-color-label {
+	font-size: .82rem;
+	font-weight: 600;
+	color: #555;
+}
+
+.raffle-swatch-trigger {
+	width: 36px;
+	height: 36px;
+	padding: 0;
+	border: 2px solid rgba(0, 0, 0, .2);
+	border-radius: 6px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+	cursor: pointer;
+}
+
+.raffle-badge-preview {
+	display: inline-flex;
+	align-items: center;
+	padding: .2em .85em;
+	border-radius: 999px;
+	font-size: .85rem;
+	font-weight: 500;
+	line-height: 1.6;
+}
+
+.raffle-icon-preview-group {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+}
+
+.raffle-icon-preview--mobile {
+	font-size: .75rem;
+}
+
+.raffle-icon-preview-caption {
+	display: block;
+	margin-top: 2px;
+	font-size: .7rem;
+	color: #888;
+}
+
+/* ── Colour picker overlay ─────────────────────────────────── */
+#raffle-color-overlay {
+	display: none;
+	position: fixed;
+	z-index: 100000;
+	min-width: 240px;
+	padding: 16px 18px 14px;
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 8px;
+	box-shadow: 0 6px 24px rgba(0, 0, 0, .18);
+}
+
+#raffle-color-overlay.is-open {
+	display: block;
+}
+
+#raffle-overlay-close {
+	position: absolute;
+	top: 8px;
+	right: 10px;
+	padding: 2px 4px;
+	background: none;
+	border: none;
+	font-size: 18px;
+	line-height: 1;
+	color: #888;
+	cursor: pointer;
+}
+
+#raffle-overlay-swatches {
+	display: none;
+	margin-bottom: 12px;
+}
+
+#raffle-overlay-swatches.is-visible {
+	display: block;
+}
+
+.raffle-overlay-swatches-title {
+	margin: 0 0 6px;
+	font-size: .75rem;
+	font-weight: 600;
+	color: #888;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+}
+
+#raffle-overlay-swatches-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.raffle-overlay-swatch {
+	flex-shrink: 0;
+	width: 26px;
+	height: 26px;
+	padding: 0;
+	border: 2px solid rgba(0, 0, 0, .12);
+	border-radius: 50%;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+	cursor: pointer;
+}
+
+.raffle-overlay-rule {
+	margin: 10px 0;
+	border: none;
+	border-top: 1px solid #f0f0f0;
+}
+
+.raffle-overlay-actions {
+	margin-top: 8px;
+}
+
+#raffle-overlay-reset {
+	padding: 0;
+	background: none;
+	border: none;
+	font-size: .8rem;
+	color: #999;
+	text-decoration: underline;
+	cursor: pointer;
+}
