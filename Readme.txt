@@ -1,4 +1,4 @@
-=== KP Raffle Search ===
+=== KP Search Integration with Raffle AI ===
 Contributors: klausenogpartners, mathiasmadsen
 Tags: raffle, search
 Requires at least: 6.1
