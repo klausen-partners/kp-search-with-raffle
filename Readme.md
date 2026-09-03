@@ -1,4 +1,4 @@
-# KP Search Integration with Raffle AI
+# K&P Search Integration with Raffle AI
 
 A WordPress Gutenberg plugin that integrates [Raffle](https://raffle.ai) search into any post or page through Gutenberg blocks and shortcodes. Features include top questions, autocomplete, AI-generated summaries, and full search results. Note that this requires an active subscription with [Raffle](https://raffle.ai) and a published Search Tool.
 

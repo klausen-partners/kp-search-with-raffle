@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "kp-search-with-raffle/widget",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"title": "KP Raffle Search Widget",
 	"category": "widgets",
 	"icon": "search",

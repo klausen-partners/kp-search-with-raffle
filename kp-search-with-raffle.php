@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Plugin Name:       KP Search Integration with Raffle AI
+ * Plugin Name:       K&P Search Integration with Raffle AI
  * Plugin URI:        https://kogp.dk
- * Description:       A Gutenberg block that integrates Raffle AI search (top questions, autocomplete, summary, and search results).
- * Version:           1.0.8
+ * Description:       Integrates Raffle AI Search into any post or page with Gutenberg Blocks.
+ * Version:           1.0.9
  * Requires at least: 6.1
  * Requires PHP:      8.1
- * Author:            Klausen and Partners
+ * Author:            Klausen & Partners
  * License:           GPL-3.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:       kp-search-with-raffle
@@ -18,7 +18,7 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-define('KP_SEARCH_WITH_RAFFLE_VERSION', '1.0.8');
+define('KP_SEARCH_WITH_RAFFLE_VERSION', '1.0.9');
 define('KP_SEARCH_WITH_RAFFLE_DIR', plugin_dir_path(__FILE__));
 define('KP_SEARCH_WITH_RAFFLE_URL', plugins_url('/', __FILE__));
 

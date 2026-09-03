@@ -1,9 +1,9 @@
 {
 	"name": "kp-search-with-raffle",
-	"version": "1.0.8",
-	"description": "KP Search Integration with Raffle AI",
+	"version": "1.0.9",
+	"description": "K&P Search Integration with Raffle AI",
 	"homepage": "https://klausenogpartners.dk/",
-	"author": "Klausen and Partners",
+	"author": "Klausen & Partners",
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/klausen-partners/kp-search-with-raffle.git"
